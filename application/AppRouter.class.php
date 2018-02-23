@@ -62,7 +62,7 @@ class AppRouter extends RouterEx
                 'param' => 'ip',
             ]],
         ],
-        // Append 'microbe/' postfix after url
+        /* Append 'microbe/' postfix after url
         [
             'conditions' => [[
                 'target' => self::FILTER_TARGET_URI,            
@@ -74,7 +74,7 @@ class AppRouter extends RouterEx
                 'param'  => 'microbe/'
             ]],
         ],
-        // Remove 'microbe' prefix before uri
+        /* Remove 'microbe' prefix before uri
         [
             'conditions' => [[
                 'target' => self::FILTER_TARGET_URI,            
@@ -87,7 +87,7 @@ class AppRouter extends RouterEx
                 'param'  => null
             ]],
         ],
-        // Handle a '^/check$' in uri
+        /* Handle a '^/check$' in uri
         [
             'conditions' => [[
                 'target' => self::FILTER_TARGET_URI,            
