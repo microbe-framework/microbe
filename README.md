@@ -1,11 +1,11 @@
 # 0.1
   
-Microbe PHP framework, release 0.1  
-Lightweight PHP framework for simple site construction  
-Test version  
+<h3>Microbe PHP framework, release 0.1</h3>  
+<h4>Lightweight PHP framework for simple site construction</h4>  
+<h4>Test version</h4>  
 Please report about bugs  
   
-1. Short help  
+<h4>1. Short help:</h4>  
   
 1.1. Unzip package in root directory of your website  
 1.2. Correct '.htaccess' and 'index.php'  
@@ -16,7 +16,7 @@ Please report about bugs
 1.7. Place Your layouts, templates, blocks in corresponding 'views' directory  
 1.8. Enjoy  
   
-2. Default directories structure:  
+<h4>2. Default directories structure:</h4>  
   
 /www-root/  
 &nbsp;&nbsp;&nbsp;&nbsp;/.htaccess  
