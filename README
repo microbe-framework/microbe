@@ -10,7 +10,7 @@ Please report about bugs
 1.3. Edit routes in '/config/routes.json'
 1.4. Edit loaded php classes and stuff in '/application/loader.inc.php'
 1.5. Edit action handlers in '/application/AppController.class.php'
-1.6. Add Your routines to '/application/AppView.class.php' if needs
+1.6. Add Your render routines in '/application/AppView.class.php' if needs
 1.7. Place Your layouts, templates, blocks in corresponding 'views' directory
 1.8. Enjoy
 
