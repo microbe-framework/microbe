@@ -62,6 +62,8 @@ class AppRouter extends RouterEx
                 'param' => 'ip',
             ]],
         ],
+        /*
+        // Use if Your site not in web-server's root directory
         // Append 'microbe/' postfix after url
         [
             'conditions' => [[
@@ -74,6 +76,7 @@ class AppRouter extends RouterEx
                 'param'  => 'microbe/'
             ]],
         ],
+        // Use if Your site not in web-server's root directory
         // Remove 'microbe' prefix before uri
         [
             'conditions' => [[
@@ -87,18 +90,7 @@ class AppRouter extends RouterEx
                 'param'  => null
             ]],
         ],
-        // Handle a '^/check$' in uri
-        [
-            'conditions' => [[
-                'target' => self::FILTER_TARGET_URI,            
-                'regex' => '#^/(check)$#',
-            ]],
-            'handlers' => [[
-                'controller' => 'app',
-                'action' => 'check',
-                'params'  => ['name' => '${1}'],
-            ]],
-        ],
+        */
     );
 
     /**************************************************************************/
