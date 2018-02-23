@@ -7,7 +7,7 @@ Please report about bugs
   
 <h4>1. Short help:</h4>  
   
-1.1. Unzip package in root directory of your website  
+1.1. Unzip package in root directory of Your website  
 1.2. Correct '.htaccess' and 'index.php'  
 1.3. Edit routes in '/config/routes.json'  
 1.4. Edit loaded php classes and stuff in '/application/loader.inc.php'  
