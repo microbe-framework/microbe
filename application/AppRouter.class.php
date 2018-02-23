@@ -10,7 +10,7 @@
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
- *    Source: https://github.com/microbe-framework/0.1/
+ *    Source: https://github.com/microbe-framework/microbe-0.1.0/
  ******************************************************************************/
 
 /******************************************************************************
@@ -60,6 +60,43 @@ class AppRouter extends RouterEx
                 'action' => self::FILTER_ACTION_ASSIGN,
                 'target' => self::FILTER_TARGET_VAR,
                 'param' => 'ip',
+            ]],
+        ],
+        // Append 'microbe/' postfix after url
+        [
+            'conditions' => [[
+                'target' => self::FILTER_TARGET_URI,            
+                'regex' => '#^/(microbe/)#',
+            ]],
+            'rules' => [[
+                'target' => self::FILTER_TARGET_URL,            
+                'action' => self::FILTER_ACTION_APPEND,
+                'param'  => 'microbe/'
+            ]],
+        ],
+        // Remove 'microbe' prefix before uri
+        [
+            'conditions' => [[
+                'target' => self::FILTER_TARGET_URI,            
+                'regex' => '#^/(microbe/)#',
+            ]],
+            'rules' => [[
+                'target' => self::FILTER_TARGET_URI,            
+                'regex' => '#^/(microbe/)#',
+                'action' => self::FILTER_ACTION_DELETE,
+                'param'  => null
+            ]],
+        ],
+        // Handle a '^/check$' in uri
+        [
+            'conditions' => [[
+                'target' => self::FILTER_TARGET_URI,            
+                'regex' => '#^/(check)$#',
+            ]],
+            'handlers' => [[
+                'controller' => 'app',
+                'action' => 'check',
+                'params'  => ['name' => '${1}'],
             ]],
         ],
     );
