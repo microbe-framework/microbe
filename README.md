@@ -18,35 +18,35 @@ Please report about bugs
   
 2. Default directories structure:  
   
-+/www-root/  
--/.htaccess  
--/index.php  
--/config/  
---/default.txt  
---/routes.json  
-    /application/  
-        /AppRouter.class.php  
-        /AppController.class.php  
-        /AppView.class.php  
-        /loader.inc.php  
-    /framework/  
-        /library/  
-            ...  
-        /classes/  
-            ...  
-    /views/  
-        /layouts/  
-            ...  
-        /templates/  
-            ...  
-        /blocks/  
-            ...  
-    /vendor/  
-        ...  
-    /css/  
-        /microbe.css  
-    /js/  
-        /microbe.js  
-    /images/  
-        ...  
+/www-root/  
+&nbsp;&nbsp;&nbsp;&nbsp;/.htaccess  
+&nbsp;&nbsp;&nbsp;&nbsp;/index.php  
+&nbsp;&nbsp;&nbsp;&nbsp;/config/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/default.txt  
+&nbsp;&nbsp;&nbsp;&nbsp;/routes.json  
+&nbsp;&nbsp;&nbsp;&nbsp;/application/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/AppRouter.class.php  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/AppController.class.php  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/AppView.class.php  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/loader.inc.php  
+&nbsp;&nbsp;&nbsp;&nbsp;/framework/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/library/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/classes/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...  
+&nbsp;&nbsp;&nbsp;&nbsp;/views/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/layouts/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/templates/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/blocks/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...  
+&nbsp;&nbsp;&nbsp;&nbsp;/vendor/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...  
+&nbsp;&nbsp;&nbsp;&nbsp;/css/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/microbe.css  
+&nbsp;&nbsp;&nbsp;&nbsp;/js/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/microbe.js  
+&nbsp;&nbsp;&nbsp;&nbsp;/images/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...  
   
