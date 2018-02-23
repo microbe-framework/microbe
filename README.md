@@ -1,6 +1,5 @@
-# 0.1.0
+# Microbe PHP framework, version 0.1.0 (development)
   
-<h3>Microbe PHP framework</h3>  
 <h4>Lightweight PHP framework for simple site construction</h4>
 <h3>Version 0.1.0 (development)</h3>  
 Please report about bugs  
