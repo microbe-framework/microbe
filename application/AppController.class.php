@@ -36,7 +36,6 @@ class AppController extends Controller
         return null;
     }
 
-
     public function indexAction($sina = null) {
         return $this->view->renderFile(
             './index.html',
