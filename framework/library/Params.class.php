@@ -94,7 +94,7 @@ class Params extends Collection
             return false;
 
         $q = $value[0];
-        if (($q != '=') || ($q != ':'))
+        if (($q != '=') && ($q != ':'))
             return false;
 
         return $q;
@@ -114,7 +114,7 @@ class Params extends Collection
             return false;
 
         $q = $value[0];
-        if (($q != '\'') || ($q != '"'))
+        if (($q != '\'') && ($q != '"'))
             return false;
 
         if ($value[$l - 1] != $q)
