@@ -7,7 +7,7 @@
     <br>
     Edition: test
     <br>
-    Source: <a href="http://www.github.com/microbe-framework/microbe-0.1.0/" target="_blank">github.com</a>
+    Source: <a href="http://www.github.com/microbe-framework/microbe/" target="_blank">github.com</a>
   </div>
   <div class="microbe-footer-right">
   </div>
