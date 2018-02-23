@@ -18,12 +18,12 @@ Please report about bugs
   
 2. Default directories structure:  
   
-/www-root/  
-&nbsp;&nbsp;&nbsp;&nbsp;/.htaccess  
-&nbsp;&nbsp;&nbsp;&nbsp;/index.php  
-&nbsp;&nbsp;&nbsp;&nbsp;/config/  
-        /default.txt  
-        /routes.json  
++/www-root/  
+-/.htaccess  
+-/index.php  
+-/config/  
+--/default.txt  
+--/routes.json  
     /application/  
         /AppRouter.class.php  
         /AppController.class.php  
