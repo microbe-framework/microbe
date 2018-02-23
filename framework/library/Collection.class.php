@@ -9,8 +9,8 @@
  *   Current: 2018/02/22
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
- *   License: MIT license 
- *    Source: https://github.com/microbe-framework/0.1/
+ *   License: MIT license
+ *    Source: https://github.com/microbe-framework/microbe-0.1.0/
  ******************************************************************************/
 
 /******************************************************************************
