@@ -1,0 +1,1 @@
+<p>HTTP error #<?=$error?></p>
