@@ -1,6 +1,6 @@
-# 0.1
+# 0.1.0
   
-<h3>Microbe PHP framework, release 0.1</h3>  
+<h3>Microbe PHP framework, release 0.1.0</h3>  
 <h4>Lightweight PHP framework for simple site construction</h4>  
 <h4>Test version</h4>  
 Please report about bugs  
