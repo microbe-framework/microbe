@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP Framework
- *   Version: 0.1.0
+ *   Version: 0.1.1
  *    Module: loader.inc.php
  *     Class: 
  *     About: application loader sample
  *     Begin: 2017/05/01
- *   Current: 2018/02/22
+ *   Current: 2018/03/02
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -26,31 +26,32 @@
 
 /******************************************************************************/
 
-// README: Place Your relative path from application root to loader here!
-$dir = rtrim(__DIR__, '/application');
+// Path to root folder
+$dir = substr(__DIR__, 0, -1 * strlen('/application'));
  
 // Microbe PHP Library
 require_once($dir.'/framework/library/Base.class.php');
-require_once($dir.'/framework/library/Path.class.php'); // ???
-require_once($dir.'/framework/library/Url.class.php'); // ???
-require_once($dir.'/framework/library/Collection.class.php'); // ???
-require_once($dir.'/framework/library/Params.class.php'); // ???
-require_once($dir.'/framework/library/Debug.class.php'); // ???
-require_once($dir.'/framework/library/Http.class.php'); // ???
+require_once($dir.'/framework/library/Path.class.php');
+require_once($dir.'/framework/library/Url.class.php');
+require_once($dir.'/framework/library/Collection.class.php');
+require_once($dir.'/framework/library/Params.class.php');
+require_once($dir.'/framework/library/Debug.class.php');
+require_once($dir.'/framework/library/Http.class.php');
 
 // Microbe PHP Framework
-require_once($dir.'/framework/classes/Config.class.php'); // ???
-//require_once($dir.'/framework/classes/Registry.class.php');
-//require_once($dir.'/framework/classes/Globals.class.php');
+require_once($dir.'/framework/classes/Config.class.php');
+require_once($dir.'/framework/classes/Registry.class.php');
+require_once($dir.'/framework/classes/Globals.class.php');
+require_once($dir.'/framework/classes/Vars.class.php');
 require_once($dir.'/framework/classes/Router.class.php');
-require_once($dir.'/framework/classes/RouterEx.class.php'); // ???
+require_once($dir.'/framework/classes/RouterEx.class.php');
 require_once($dir.'/framework/classes/View.class.php');
 require_once($dir.'/framework/classes/Controller.class.php');
 require_once($dir.'/framework/classes/Application.class.php');
 
 // Application
 require_once('AppRouter.class.php');
-//require_once('AppView.class.php');
+require_once('AppView.class.php');
 require_once('AppController.class.php');
 
 /******************************************************************************/
