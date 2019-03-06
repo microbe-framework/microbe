@@ -26,14 +26,8 @@
 
 /******************************************************************************/
 
-// README: Place Your relative path from application root to loader here!
-//$dir = rtrim(__DIR__, '/application');
-//$dir = '/var/www/microbe.lan/public';
+// Path to root folder
 $dir = substr(__DIR__, 0, -1 * strlen('/application'));
-
-//echo __DIR__;
-//echo $dir;
-//exit();
  
 // Microbe PHP Library
 require_once($dir.'/framework/library/Base.class.php');
