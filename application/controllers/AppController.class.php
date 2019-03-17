@@ -44,10 +44,6 @@ class AppController extends Microbe\Controller
     }
 
     public function pageAction($page) {
-        if ($this->app->getConfigValue('database.active') == 1) {
-        //  $appModel = new AppModel($this->app);
-            $userModel = new UserModel($this->app);
-        }
         return $this->view->renderLayout(
             'main',
             ['layout' => 'main', 'page' => $page]
