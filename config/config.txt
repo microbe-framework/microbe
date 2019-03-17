@@ -38,7 +38,7 @@ microbe.source.service.name = github.com
 microbe.source.service.url = http://www.github.com/microbe-framework/microbe/
 
 microbe.begin.date = 2017/05/01
-microbe.release.date = 2019/03/16
+microbe.release.date = 2019/03/17
 
 // Application
 
