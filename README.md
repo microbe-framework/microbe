@@ -13,17 +13,27 @@ Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
 &nbsp;&nbsp;&nbsp;License: MIT license  
 &nbsp;&nbsp;&nbsp;&nbsp;Source: https://github.com/microbe-framework/microbe/  
   
+One of goals of this project is Router-View architecture.  
+The application render a layout directly after routing.  
+You must define routing rules and create corresponding views.  
+Controllers unnecessary at all.  
+This approach applicable for simple sites and landing pages.  
+  
+Project under developement.  
+Please report about bugs.  
+  
 <h3>1. Short help:</h3>  
   
 1.1. Unzip or git clone package in root directory of Your website.  
 1.2. Correct '.htaccess' and 'index.php'.  
-1.3. Edit routes in '/config/routes.json'.  
-1.4. Add data models in '/application/model/' if needs.  
-1.5. Add views' render routines in '/application/views/' if needs.  
-1.6. Edit action handlers in '/application/controllers/' if needs.  
-1.7. Edit loader for Your own classes in '/application/AppLoader.inc.php'.  
-1.8. Place Your layouts, templates, blocks in corresponding 'views' directory.  
-1.9. Enjoy.  
+1.3. Edit config in '/config/config.txt'.  
+1.4. Edit routes in '/config/routes.json'.  
+1.5. Add data models in '/application/model/' if needs.  
+1.6. Add views' render routines in '/application/views/' if needs.  
+1.7. Edit action handlers in '/application/controllers/' if needs.  
+1.8. Edit loader for Your own classes in '/application/AppLoader.inc.php'.  
+1.9. Place Your layouts, templates, blocks in corresponding 'views' directory.  
+1.10. Enjoy.  
   
 <h3>2. Default directories structure:</h3>  
   
