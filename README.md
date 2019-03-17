@@ -81,8 +81,7 @@ Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
   
 <h3>3. Changes.</h3>  
 
-<h4>Version 0.1.1</h4>  
-<h4>Date 2019 march 16</h4>  
+<h4>Version 0.1.1 (2019 march 17)</h4>  
 &nbsp;&nbsp;&nbsp;&nbsp;Enclose framework classes into namespace 'Microbe'  
 &nbsp;&nbsp;&nbsp;&nbsp;Add database connection support (MySqli only).  
 &nbsp;&nbsp;&nbsp;&nbsp;Add classes for recordsets & connections.  
@@ -94,7 +93,6 @@ Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
 &nbsp;&nbsp;&nbsp;&nbsp;Add assets directory and place js, css and images into assets.  
 &nbsp;&nbsp;&nbsp;&nbsp;Extends set of configuration variables for config.txt.  
   
-<h4>Version 0.1.0</h4>  
-<h4>Date 2018 february 23</h4>  
+<h4>Version 0.1.0 (2018 february 23)</h4>  
 &nbsp;&nbsp;&nbsp;&nbsp;First release.  
   
