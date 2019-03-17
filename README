@@ -1,32 +1,61 @@
-Microbe PHP framework
-Lightweight PHP framework for simple site construction
-Version 0.1.0 (development)
-Please report about bugs
+ 
+   Project: Microbe PHP Framework
+     About: Lightweight PHP framework for simple site construction
+   Version: 0.1.1 (developement)
+     Begin: 2017 may 01
+   Current: 2019 march 16
+    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
+   License: MIT license
+    Source: https://github.com/microbe-framework/microbe/
 
-1. Short help
+One of goals of this project is Router-View architecture.
+The application render a layout directly after routing.
+You must define routing rules and create corresponding views.
+Controllers unnecessary at all.
+This approach applicable for simple sites and landing pages.
 
-1.1. Unzip package in root directory of your website
-1.2. Correct '.htaccess' and 'index.php'
-1.3. Edit routes in '/config/routes.json'
-1.4. Edit loaded php classes and stuff in '/application/loader.inc.php'
-1.5. Edit action handlers in '/application/AppController.class.php'
-1.6. Add Your render routines in '/application/AppView.class.php' if needs
-1.7. Place Your layouts, templates, blocks in corresponding 'views' directory
-1.8. Enjoy
+Project under developement.
+Please report about bugs.
+
+1. Short help.
+
+1.1. Unzip or git clone package in root directory of your website.
+1.2. Correct '.htaccess' and 'index.php'.
+1.3. Edit routes in '/config/routes.json'.
+1.4. Add data models in '/application/model/' if needs.
+1.5. Add views' render routines in '/application/views/' if needs.
+1.6. Edit action handlers in '/application/controllers/' if needs.
+1.7. Edit loader for Your own classes in '/application/AppLoader.inc.php'.
+1.8. Place Your layouts, templates, blocks in corresponding 'views' directory.
+1.9. Enjoy.
 
 2. Default directories structure:
 
 /www-root/
+    /README
+    /README.md
+    /LICENSE
     /.htaccess
     /index.php
     /config/
-        /default.txt
+        /config.txt
         /routes.json
     /application/
-        /AppRouter.class.php
-        /AppController.class.php
-        /AppView.class.php
-        /loader.inc.php
+        /AppLoader.inc.php
+        /routers
+            /AppRouter.class.php
+            ...
+        /models
+            /AppModel.class.php
+            ...
+        /views
+            /AppView.class.php
+            ...
+        /controllers
+            /AppController.class.php
+            ...
+         ...
     /framework/
         /library/
             ...
@@ -41,9 +70,31 @@ Please report about bugs
             ...
     /vendor/
         ...
-    /css/
-        /microbe.css
-    /js/
-        /microbe.js
-    /images/        
-        ...
+    /assets/
+        /css/
+            /microbe.css
+        /js/
+            /microbe.js
+        /images/
+            /icons/
+                ...
+            ....
+
+3. Changes.
+
+Version 0.1.1
+Date 2019 march 16
+    Enclose framework classes into namespace 'Microbe'
+    Add database connection support (MySqli only).
+    Add classes for recordsets & connections.
+    Add Model class.
+    Old loader '/application/load.inc.php' replaced with Loader and AppLoader classes.
+    Add HttpRequest class.
+    Detects and handle site prefix if site locates not in server root.
+    Change directories structure.
+    Add assets directory and place js, css and images into assets.
+    Extends set of configuration variables for config.txt.
+
+Version 0.1.0
+Date 2018 february 23
+    First release.

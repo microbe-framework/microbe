@@ -1,4 +1,3 @@
-
 User-agent: *
 Allow: /
 Allow: /about
@@ -18,10 +17,6 @@ Disallow: /framework
 Disallow: /views
 Disallow: /vendor
 Disallow: /admin
-Host: http://www.your-site.com
-Sitemap: http://www.your-site.com/sitemap.xml
-
-User-agent: *
 Disallow: /*.txt$
 Disallow: /*.cfg$
 Disallow: /*.conf$
@@ -61,6 +56,6 @@ Disallow: /*.zip$
 Disallow: /*.rar$
 Disallow: /*.gz$
 Disallow: /*.z7$
-
-User-agent: *
 Crawl-delay: 1
+Host: www.your-site.com
+Sitemap: http://www.your-site.com/sitemap.xml
