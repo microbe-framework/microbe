@@ -28,9 +28,9 @@ Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
 <h3>2. Default directories structure:</h3>  
   
 /www-root/  
-&nbsp;&nbsp;&nbsp;&nbsp;/.README  
-&nbsp;&nbsp;&nbsp;&nbsp;/.README.md  
-&nbsp;&nbsp;&nbsp;&nbsp;/.LICENSE  
+&nbsp;&nbsp;&nbsp;&nbsp;/README  
+&nbsp;&nbsp;&nbsp;&nbsp;/README.md  
+&nbsp;&nbsp;&nbsp;&nbsp;/LICENSE  
 &nbsp;&nbsp;&nbsp;&nbsp;/.htaccess  
 &nbsp;&nbsp;&nbsp;&nbsp;/index.php  
 &nbsp;&nbsp;&nbsp;&nbsp;/sitemap.xml  
