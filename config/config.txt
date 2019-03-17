@@ -1,0 +1,90 @@
+/*******************************************************************************
+ *   Project: Microbe PHP Framework
+ *   Version: 0.1.1
+ *    Module: config.txt
+ *     About: Microbe default application configuration file
+ *     Begin: 2017/05/01
+ *   Current: 2019/03/17
+ *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ *   License: MIT license
+ *    Source: https://github.com/microbe-framework/microbe/
+ ******************************************************************************/
+
+/******************************************************************************
+ *            This file is part of the Microbe PHP Framework.                 *
+ *                                                                            *
+ *         Copyright (c) 2017-2019 Microbe PHP Framework author               *
+ *                  <microbe-framework@protonmail.com>                        *
+ *                                                                            *
+ *            For the full copyright and license information,                 *
+ *                     please view the LICENSE file                           *
+ *              that was distributed with this source code.                   *
+ ******************************************************************************/
+
+// Microbe
+
+microbe.caption = Microbe PHP Framework
+microbe.version = 0.1.1
+microbe.edition = development
+
+microbe.author = Microbe PHP Framework author
+microbe.copyright = Copyright (c) 2017-2019 The Microbe PHP Framework author
+
+microbe.license.type = MIT license
+microbe.license.url = https://github.com/microbe-framework/microbe/blob/master/LICENSE
+
+microbe.source.service.name = github.com
+microbe.source.service.url = http://www.github.com/microbe-framework/microbe/
+
+microbe.begin.date = 2017/05/01
+microbe.release.date = 2019/03/16
+
+// Application
+
+// By default framework use 4 basic classes: Router, Model, View, Controller
+// If You want to use Your own:
+// - Place Your classes in ./application directory
+// - Add classes and their paths in ./application/AppLoader.class.php
+// - Uncomment corresponding lines below and assign Your classnames
+
+// NOTE:
+//   Dever assign 'app.router.class' value if You use 'routes.json'
+// NOTE:
+//   Parameter 'app.model.class' is bad to use
+//   Better instantiate a model in code when it needs
+// NOTE:
+//   Parameter 'app.controller.class' unusable by now
+//   Framework determines a controller class on-the-fly by routing rules
+//   You needn't place it in this file
+
+//app.router.class = AppRouter
+//app.model.class = AppModel
+//app.view.class = AppView
+//app.controller.class = AppController
+
+// Database
+// Framework support a 'mysqli' driver only
+// If 'database.driver' not defined an application will not connect to database
+
+database.driver = mysqli
+database.host = localhost
+database.port = 3306
+database.user = user
+database.pass = password
+database.base = test
+database.charset = utf8
+
+// Html
+
+html.title = Microbe PHP Framework
+
+html.meta.description = Microbe PHP Framework
+html.meta.keywords = Microbe PHP Framework
+html.meta.author = Microbe PHP Framework author
+html.meta.copyright = Microbe PHP Framework author
+html.meta.contact = microbe-framework@protonmail.com
+html.meta.generator = Microbe PHP Framework
+html.meta.rating = safe for kids
+html.meta.robots = all
+html.meta.revisit_after = 7 days
