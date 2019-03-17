@@ -80,19 +80,19 @@ Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...  
   
 <h3>3. Changes.</h3>  
-
+  
 <h4>Version 0.1.1 (2019 march 17)</h4>  
-&nbsp;&nbsp;&nbsp;&nbsp;1. Enclose framework classes into namespace 'Microbe'<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;2. Add database connection support (MySqli only).<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;3. Add classes for recordsets & connections.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;4. Add Model class.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;5. Old loader '/application/load.inc.php' replaced with Loader and AppLoader classes.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;6. Add HttpRequest class.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;7. Detects and handle site prefix if site locates not in server root.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;8. Change directories structure.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;9. Add assets directory and place js, css and images into assets.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;10. Extends set of configuration variables for config.txt.<br/>
+1. Enclose framework classes into namespace 'Microbe'.<br/>
+2. Add database connection support (MySqli only).<br/>
+3. Add classes for recordsets & connections.<br/>
+4. Add Model class.<br/>
+5. Old loader '/application/load.inc.php' replaced with Loader and AppLoader classes.<br/>
+6. Add HttpRequest class.<br/>
+7. Detects and handle site prefix if site locates not in server root.<br/>
+8. Change directories structure.<br/>
+9. Add assets directory and place js, css and images into assets.<br/>
+10. Extends set of configuration variables for config.txt.<br/>
   
 <h4>Version 0.1.0 (2018 february 23)</h4>  
-&nbsp;&nbsp;&nbsp;&nbsp;First release.  
+First release.  
   
