@@ -9,7 +9,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Begin: 2017 may 01  
 &nbsp;&nbsp;&nbsp;Current: 2019 march 17  
 &nbsp;&nbsp;&nbsp;&nbsp;Author: Microbe PHP Framework author <microbe-framework@protonmail.com>  
-&nbsp;Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>  
+Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>  
 &nbsp;&nbsp;&nbsp;License: MIT license  
 &nbsp;&nbsp;&nbsp;&nbsp;Source: https://github.com/microbe-framework/microbe/  
   
