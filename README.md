@@ -7,7 +7,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About: Lightweight PHP framework for simple site construction  
 &nbsp;&nbsp;&nbsp;Version: 0.1.1 (developement)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Begin: 2017 may 01  
-&nbsp;&nbsp;&nbsp;Current: 2019 march 16  
+&nbsp;&nbsp;&nbsp;Current: 2019 march 17  
 &nbsp;&nbsp;&nbsp;&nbsp;Author: Microbe PHP Framework author <microbe-framework@protonmail.com>  
 &nbsp;Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>  
 &nbsp;&nbsp;&nbsp;License: MIT license  
