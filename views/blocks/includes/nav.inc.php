@@ -6,5 +6,9 @@
   |  
   <a href="<?=$this->getUrl('./articles');?>">Articles</a>
   |  
+  <a href="<?=$this->getUrl('./layout');?>">Layout</a>
+  |  
+  <a href="<?=$this->getUrl('./redirect');?>">Redirect</a>
+  |  
   <a href="<?=$this->getUrl('./contacts');?>">Contacts</a>
 </div>

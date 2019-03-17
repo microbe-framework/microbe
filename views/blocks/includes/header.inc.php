@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 
   <meta charset="utf-8">
@@ -20,12 +20,12 @@
   <meta name="generator" content="Microbe PHP Framework">
   <meta name="rating" content="safe for kids">
 
-  <link rel="stylesheet" href="<?=$this->getUrl('./css/microbe.css')?>">
+  <link rel="stylesheet" href="<?=$this->getUrl('./assets/css/microbe.css')?>">
 
 </head>
 <body>
 
 <div class="microbe-header">
-  <h1>Microbe PHP Framework</h1>
-  <h3>Version 0.1.0 (test)</h3>
+  <h1><?=$this->getConfigValue('microbe.caption')?></h1>
+  <h3>Version <?=$this->getConfigValue('microbe.version')?> (<?=$this->getConfigValue('microbe.edition')?>)</h3>
 </div>
