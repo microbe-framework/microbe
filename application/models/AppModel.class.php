@@ -6,7 +6,7 @@
  *     Class: AppModel
  *     About: Application data model
  *     Begin: 2019/03/11
- *   Current: 2019/03/16
+ *   Current: 2019/03/17
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
