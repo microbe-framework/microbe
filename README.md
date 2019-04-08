@@ -41,7 +41,7 @@ Please report about bugs.
 &nbsp;&nbsp;&nbsp;&nbsp;/README.md  
 &nbsp;&nbsp;&nbsp;&nbsp;/LICENSE  
 &nbsp;&nbsp;&nbsp;&nbsp;/application/  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/config/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/configs/  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/config.txt  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/vars.json  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/routes.json  
@@ -84,7 +84,7 @@ Please report about bugs.
     
 <h3>3. Changes.</h3>  
   
-<h4>Version 0.1.2 (2019 april 08)</h4>  
+<h4>Version 0.1.2 (2019 april 03)</h4>  
 1. Add PostgreSql database support (not tested).<br/>
 2. Remake render engine.<br/>
 3. Add Log and Timer classes.<br/>

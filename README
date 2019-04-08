@@ -39,7 +39,7 @@ Please report about bugs.
     /README.md  
     /LICENSE  
     /application/  
-        /config/  
+        /configs/  
              /config.txt  
              /vars.json  
              /routes.json  
@@ -82,7 +82,7 @@ Please report about bugs.
   
 3. Changes.  
   
-Version 0.1.2 (2019 april 03)  
+Version 0.1.2 (2019 april 08)  
     Add PostgreSql database support (not tested).  
     Remake render engine.  
     Add Log and Timer classes.  
