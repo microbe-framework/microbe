@@ -26,9 +26,9 @@
         <li>Edit config in
             <span class="app-span-highlight">'./application/configs/config.txt'</span>.
         <li>Edit routes in 
-            <span class="app-span-highlight">'./application/config/routes.json'</span>.
+            <span class="app-span-highlight">'./application/configs/routes.json'</span>.
         <li>Edit variables in
-            <span class="app-span-highlight">'./application/config/vars.json'</span>
+            <span class="app-span-highlight">'./application/configs/vars.json'</span>
             (optional).
         <li>Add data models in
             <span class="app-span-highlight">'./application/Models/'</span>
