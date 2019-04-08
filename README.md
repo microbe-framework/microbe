@@ -25,7 +25,7 @@ Please report about bugs.
 <h3>1. Short help:</h3>  
   
 1.1.  Unzip or git clone package in root application directory.  
-1.2.  Site documents' root must be './web/' directory. 
+1.2.  Site documents' root must be './web/' directory.  
 1.3.  Correct './web/.htaccess' and './web/index.php' (optional).  
 1.4.  Edit config in './application/configs/config.txt'.  
 1.5.  Edit routes in './application/config/routes.json'.  
