@@ -5,7 +5,7 @@
   
 &nbsp;&nbsp;&nbsp;Project: Microbe PHP Framework  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About: Lightweight PHP framework for simple site construction  
-&nbsp;&nbsp;&nbsp;Version: 0.1.1 (developement)  
+&nbsp;&nbsp;&nbsp;Version: 0.1.2 (developement)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Begin: 2017 may 01  
 &nbsp;&nbsp;&nbsp;Current: 2019 april 08  
 &nbsp;&nbsp;&nbsp;&nbsp;Author: Microbe PHP Framework author <microbe-framework@protonmail.com>  
