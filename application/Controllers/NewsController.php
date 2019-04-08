@@ -2,11 +2,11 @@
 /*******************************************************************************
  *   Project: Microbe PHP Framework
  *   Version: 0.1.2
- *    Module: AppController.php
- *     Class: AppController
+ *    Module: NewsController.php
+ *     Class: NewsController
  *     About: AppController controller sample
- *     Begin: 2017/05/01
- *   Current: 2019/04/03
+ *     Begin: 2019/03/25
+ *   Current: 2019/03/29
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -26,64 +26,42 @@
 
 namespace App\Controllers;
 
-use \Microbe\Library\Url as Url;
+use \Microbe\Library\Arrays;
 
-class AppController extends \Microbe\Core\Controller
+class NewsController extends \Microbe\Core\Controller
 {
     /**************************************************************************/
     // Actions
     /**************************************************************************/
 
-    // Unused
-    public function defaultAction() {
-        return null;
+    public function insertAction($params) {
+        if (is_array($params) == false)
+            return;
+
+        $f_News = Arrays::getStringSafe2($params, 'f_News');
+        $f_Url  = Arrays::getStringSafe2($params, 'f_Url');
+
+        if (empty($f_News) && empty($f_Url))
+            return;
+
+    //  (new NewsModel($this->app))->insertNews($f_News, $f_Url);
+        $this->app->getObject('\App\Models\NewsModel')->insertNews($f_News, $f_Url);
     }
 
-    // Used only for test purposes
-    public function indexAction($page, $hello = null) {
-        return $this->view->renderFile(
-            './views/main.layout.php',
-            ['page' => 'index', 'hello' => $hello.', world!']
-        );
-    }
+    /**************************************************************************/
 
-    public function pageAction($page) {
-        // $page is URI then remove first left '/'
-        $page = Url::adjustLeft($page);
-        return $this->view->renderLayout(
-            'main',
-            ['layout' => 'main', 'page' => $page]
-        );
-    }
+    public function deleteAction($params) {
+        if (is_array($params) == false)
+            return;
 
-    public function handbookAction($page) {
-        // $page is URI then remove first left '/'
-        $page = Url::adjustLeft($page);
-        return $this->view->renderLayout(
-            'main',
-            ['layout' => 'main', 'page' => './handbook/'.$page]
-        );
-    }
+    //  $f_NewsId = Arrays::getInteger($params, 'f_NewsId');
+        $f_NewsId = Arrays::getInteger($params, 'id');
 
-    public function articleAction($article) {
-        // $article is URI then remove first left '/'
-        $article = Url::adjustLeft($article);
-        return $this->view->renderLayout(
-            'main',
-            ['layout' => 'main', 'page' => './articles/'.$article]
-        );
-    }
+        if (empty($f_NewsId))
+            return;
 
-    public function redirectAction() {
-        return $this->redirect('redirect_to_any_unexisting_page');
-    }
-
-    // Unused
-    public function errorAction($error = 404) {
-        return $this->view->renderTemplate(
-            'error',
-            ['error' => $error]
-        );
+    //  (new NewsModel($this->app))->deleteNewsById($f_NewsId);
+        $this->app->getObject('\App\Models\NewsModel')->deleteNewsById($f_NewsId);
     }
 
     /**************************************************************************/
