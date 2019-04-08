@@ -29,7 +29,7 @@
 /******************************************************************************/
 // Application constants
 
-const APP_PHP_VERSION_MIN               = 5.6;
+const APP_PHP_VERSION_MIN               = 5.3;
 const APP_PRODUCTION                    = false;
 const APP_ENTRY                         = __DIR__;
 
