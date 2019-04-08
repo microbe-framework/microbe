@@ -1,0 +1,145 @@
+/*******************************************************************************
+ *   Project: Microbe PHP framework
+ *   Version: 0.1.2
+ *    Module: routes.json
+ *     Class:
+ *     About: Basic routes and filters sample (JSON syntax with comments)
+ *     Begin: 2017/05/01
+ *   Current: 2019/04/03
+ *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ *   License: MIT license 
+ *    Source: https://github.com/microbe-framework/microbe/
+ ******************************************************************************/
+
+/******************************************************************************
+ *            This file is part of the Microbe PHP Framework.                 *
+ *                                                                            *
+ *         Copyright (c) 2017-2019 Microbe PHP Framework author               *
+ *                  <microbe-framework@protonmail.com>                        *
+ *                                                                            *
+ *            For the full copyright and license information,                 *
+ *                     please view the LICENSE file                           *
+ *              that was distributed with this source code.                   *
+ ******************************************************************************/
+ 
+/******************************************************************************/
+
+{
+    /**************************************************************************/
+    // Prefixes (unused)
+    /**************************************************************************/
+
+    "prefixes": [
+    //  "microbe"
+    ],
+
+    /**************************************************************************/
+    // Filters
+    // RouterEx or heirs required
+    /**************************************************************************/
+
+    "filters": [
+    ],
+
+    /**************************************************************************/
+    // Routes
+    // This routing rules will override all rules in Router/RouterEx etc classes
+    /**************************************************************************/
+
+    "routes": [
+        // Index
+        // URI: '/'
+        {
+            "match": "/",
+            "controller": "app",
+            "action": "page",
+            "params": {"page": "about"}
+        },
+        // => appController->pageAction($page)
+        // URI: '/[about,articles,changes,contacts,directories,handbook,license]'
+        {
+            "match": ["/about", "/articles", "/changes", "/contacts", "/directories", "/handbook", "/license"],
+            "controller": "app",
+            "action": "page",
+            "params": {"page": "${1}"}
+        },
+        // Articles: pages
+        // Sample: '/articles/12'
+        {
+            "regex": "#^/articles/([0-9]{1,16})$#",
+            "controller": "app",
+            "action": "article",
+            "params": {"article": "${1}"}
+        },
+        // Articles: pages
+        // Sample: '/12'
+        {
+            "regex": "#^/([0-9]{1,16})$#",
+            "controller": "app",
+            "action": "article",
+            "params": {"article": "# ${1}"}
+        },
+        // Handbook: handbook/page
+        // Sample: '/handbook/page'
+        {
+            "regex": "#^/handbook/([0-9a-zA-Z]{1,32})$#",
+            "controller": "app",
+            "action": "handbook",
+            "params": {"handbook": "${1}"}
+        },
+        // Redirect handling example
+        // URI: '/redirect'
+        {
+            "match": "/redirect",
+            "controller": "app",
+            "action": "redirect"
+        },
+        // Layout handling example
+        // Direct render without controller
+        // URI: '/layout'
+        {
+            "match": "/layout",
+            "layout": "main",
+            "params": {"page": "index"}
+        },
+        // Template handling example
+        // Direct render without controller
+        // URI: '/template'
+        {
+            "match": "/template",
+            "template": "error",
+            "params": {"error": 500}
+        },
+        // Index
+        // Test purposes access by user restriction
+        // URI: '/index'
+        {
+            "match": "/index",
+            "allow": ["GET","POST"],
+            "access": ["root", "microbe"],
+            "controller": "app",
+            "action": "index",
+            "params": {"page": "index", "hello": "hello"}
+        },
+        // Stop immediately after routing
+        // URI: '/exit'
+        {
+            "match": "/exit",
+            "exit": 0
+        },
+        // Error 404
+        // URI: all other
+        {
+            "regex": "#/^.*$#",
+            "controller": "app",
+            "action": "page",
+            "params": {"page": "404"},
+            "code": 404
+        }
+    ]
+
+    /**************************************************************************/
+}
+
+/******************************************************************************/

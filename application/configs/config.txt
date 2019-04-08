@@ -1,1 +1,131 @@
+/*******************************************************************************
+ *   Project: Microbe PHP Framework
+ *   Version: 0.1.2
+ *    Module: config.txt
+ *     About: Microbe default application configuration file
+ *     Begin: 2017/05/01
+ *   Current: 2019/04/04
+ *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ *   License: MIT license
+ *    Source: https://github.com/microbe-framework/microbe/
+ ******************************************************************************/
 
+/******************************************************************************
+ *            This file is part of the Microbe PHP Framework.                 *
+ *                                                                            *
+ *         Copyright (c) 2017-2019 Microbe PHP Framework author               *
+ *                  <microbe-framework@protonmail.com>                        *
+ *                                                                            *
+ *            For the full copyright and license information,                 *
+ *                     please view the LICENSE file                           *
+ *              that was distributed with this source code.                   *
+ ******************************************************************************/
+
+////////////////////////////////////////////////////////////////////////////////
+// Microbe
+
+microbe.caption = Microbe PHP Framework
+microbe.version = 0.1.2
+microbe.edition = development
+
+microbe.author = Microbe PHP Framework author
+microbe.copyright = Copyright (c) 2017-2019 The Microbe PHP Framework author
+
+microbe.license.type = MIT license
+microbe.license.url = https://github.com/microbe-framework/microbe/blob/master/LICENSE
+
+microbe.source.service.name = github.com
+microbe.source.service.url = http://www.github.com/microbe-framework/microbe/
+
+microbe.begin.date = 2017/05/01
+microbe.release.date = 2019/04/04
+
+////////////////////////////////////////////////////////////////////////////////
+// Application
+
+// By default framework use basic classes:
+// Router, Model, View, Controller, Log etc
+// You can override some of them here.
+// Application directory './application/' presents as namespace '/App'
+// - Place models to ./application/Models directory
+// - Place controllers to ./application/Controllers directory
+// - Place other modules to ./application/Classes directory
+
+// You can override here default router class
+// [!] Never assign 'router.class' value if You use 'routes.json'
+//router.class = \App\Classes\AppRouter
+
+// You can override here default model class
+// Actual for single model application architecture
+// [!] Parameter 'model.class' is bad to use
+// [!] Better instantiate a model in code when it needs
+//model.class = \App\Models\AppModel
+
+// You can override here default views renderer class
+//view.class = \App\Classes\AppView
+
+// You can override here default controller class
+// Actual for single controller application architecture
+// [!] Parameter 'controller.class' unusable by now
+// [!] Framework determines a controller class on-the-fly by routing rules
+// [!] You needn't place it in this file
+//controller.class = \App\Controllers\AppController
+
+////////////////////////////////////////////////////////////////////////////////
+
+// Comment 'log.enable' if You don't log application activity
+// You can create Your own logger class
+// and place it in './application/Classes' directory
+log.enable = 0
+//log.class = \App\Classes\AppLog
+//log.filepath = ./tmp/log/microbe.log
+//log.directory = ./tmp/log
+
+globals.enable = 0
+//globals.filepath
+//globals.directory
+
+vars.enable = 1
+//vars.filepath
+//vars.directory
+
+////////////////////////////////////////////////////////////////////////////////
+// Auth
+// Default authentication
+
+auth.enable = 1
+auth.user = microbe
+auth.pass = microbe
+
+////////////////////////////////////////////////////////////////////////////////
+// Database
+// At this moment framework support 'mysqli' and 'postgres' drivers only
+// If 'database.driver' not defined an application will not connect to database
+// If 'database.enable' commented an application will not connect to database
+
+database.enable = 1
+database.driver = mysqli
+database.host = localhost
+database.port = 3306
+database.user = user
+database.pass = 987654321qaz
+database.base = test
+database.charset = utf8
+
+////////////////////////////////////////////////////////////////////////////////
+// Html
+
+html.title = Microbe PHP Framework
+
+html.meta.description = Microbe PHP Framework
+html.meta.keywords = Microbe PHP Framework
+html.meta.author = Microbe PHP Framework author
+html.meta.copyright = Microbe PHP Framework author
+html.meta.contact = microbe-framework@protonmail.com
+html.meta.generator = Microbe PHP Framework
+html.meta.rating = safe for kids
+html.meta.robots = all
+html.meta.revisit_after = 7 days
+
+////////////////////////////////////////////////////////////////////////////////
