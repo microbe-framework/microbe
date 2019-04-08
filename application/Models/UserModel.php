@@ -6,7 +6,7 @@
  *     Class: AppModel
  *     About: Application data model
  *     Begin: 2019/03/11
- *   Current: 2019/03/25
+ *   Current: 2019/03/18
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -25,20 +25,15 @@
  ******************************************************************************/
  
 namespace App\Models;
-
-class AppModel extends \Microbe\Core\Model
+ 
+class UserModel extends \Microbe\Core\Model
 {
     /**************************************************************************/
     // Place Your code here
 
-    public $users = null;
-
-    /**************************************************************************/
-
-    public function __construct(&$app) {
-        parent::__construct($app);
-        $this->users = &$this->queryUsers();
-    }
+//  public function __construct(&$app) {
+//     parent::__construct($app);
+//  }
 
     /**************************************************************************/
     // Place Your code here
@@ -48,11 +43,11 @@ class AppModel extends \Microbe\Core\Model
         return $this->query($query, false);
     }
 
-    public function &fetchUser() {
-        return $this->fetchAssoc($this->users, false);
+    public function &fetchUser($users) {
+        return $this->fetchAssoc($users);
     }
 
-    public function queryUserById($id) {
+    public function &queryUserById($id) {
         $query = 'SELECT f_User FROM t_Users WHERE f_UserId = '.$id;
         return $this->queryString($query, false);
     }

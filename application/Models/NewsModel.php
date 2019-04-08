@@ -2,8 +2,8 @@
 /*******************************************************************************
  *   Project: Microbe PHP Framework
  *   Version: 0.1.2
- *    Module: AppModel.php
- *     Class: AppModel
+ *    Module: NewsModel.php
+ *     Class: NewsModel
  *     About: Application data model
  *     Begin: 2019/03/11
  *   Current: 2019/03/25
@@ -23,38 +23,46 @@
  *                     please view the LICENSE file                           *
  *              that was distributed with this source code.                   *
  ******************************************************************************/
- 
+
 namespace App\Models;
 
-class AppModel extends \Microbe\Core\Model
+class NewsModel extends \Microbe\Core\Model
 {
     /**************************************************************************/
     // Place Your code here
 
-    public $users = null;
-
-    /**************************************************************************/
-
-    public function __construct(&$app) {
-        parent::__construct($app);
-        $this->users = &$this->queryUsers();
-    }
+//  public function __construct(&$app) {
+//      parent::__construct($app);
+//  }
 
     /**************************************************************************/
     // Place Your code here
     
-    public function &queryUsers() {
-        $query = 'SELECT * from t_Users';
+    public function &queryNews() {
+        $query = 'SELECT * FROM t_News ORDER BY f_NewsId DESC';
         return $this->query($query, false);
     }
 
-    public function &fetchUser() {
-        return $this->fetchAssoc($this->users, false);
+    public function &fetchNews($news) {
+        return $this->fetchAssoc($news, false);
     }
 
-    public function queryUserById($id) {
-        $query = 'SELECT f_User FROM t_Users WHERE f_UserId = '.$id;
+    public function queryNewsById($f_NewsId) {
+        $query = 'SELECT f_News FROM t_News WHERE f_NewsId = '.$f_NewsId;
         return $this->queryString($query, false);
+    }
+
+    public function deleteNewsById($f_NewsId) {
+        $query = 'DELETE FROM t_News WHERE f_NewsId = '.$f_NewsId;
+        return $this->execute($query, false);
+    }
+
+    public function insertNews($f_News, $f_Url) {
+        $query = 'INSERT INTO t_News
+            (f_News, f_Url)
+            VALUES
+            ("'.$f_News.'", "'.$f_Url.'")';
+        return $this->insert($query, false);
     }
 
     /**************************************************************************/
