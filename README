@@ -24,8 +24,8 @@ Please report about bugs.
 1.2.  Site documents' root must be './web/' directory. 
 1.3.  Correct './web/.htaccess' and './web/index.php' (optional).  
 1.4.  Edit config in './application/configs/config.txt'.  
-1.5.  Edit routes in './application/config/routes.json'.  
-1.6.  Edit variables in './application/config/vars.json' (optional).  
+1.5.  Edit routes in './application/configs/routes.json'.  
+1.6.  Edit variables in './application/configs/vars.json' (optional).  
 1.7.  Add data models in './application/Models/' (optional).  
 1.8.  Add controllers and edit action handlers in './application/Controllers/' (optional).  
 1.9.  Add classes to './application/Classes/' (optional).  
