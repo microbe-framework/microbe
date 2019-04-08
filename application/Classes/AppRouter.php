@@ -6,7 +6,7 @@
  *     Class: AppRouter
  *     About: AppRouter sample
  *     Begin: 2017/05/01
- *   Current: 2019/03/17
+ *   Current: 2019/04/08
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -24,7 +24,9 @@
  *              that was distributed with this source code.                   *
  ******************************************************************************/
 
-class AppRouter extends Microbe\RouterEx
+namespace App\Classes;
+
+class AppRouter extends \Microbe\Core\RouterEx
 {
     /**************************************************************************/
     // Filters

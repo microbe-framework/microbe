@@ -6,7 +6,7 @@
  *     Class: AppView
  *     About: AppView sample
  *     Begin: 2017/05/01
- *   Current: 2019/03/17
+ *   Current: 2019/04/08
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -23,8 +23,10 @@
  *                     please view the LICENSE file                           *
  *              that was distributed with this source code.                   *
  ******************************************************************************/
- 
-class AppView extends Microbe\View
+
+namespace App\Classes;
+
+class AppView extends \Microbe\Core\View
 {
     /**************************************************************************/
     // Place Your code here
