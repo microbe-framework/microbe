@@ -4,7 +4,7 @@
  *    Module: config.txt
  *     About: Microbe default application configuration file
  *     Begin: 2017/05/01
- *   Current: 2019/04/04
+ *   Current: 2019/04/08
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -39,7 +39,7 @@ microbe.source.service.name = github.com
 microbe.source.service.url = http://www.github.com/microbe-framework/microbe/
 
 microbe.begin.date = 2017/05/01
-microbe.release.date = 2019/04/04
+microbe.release.date = 2019/04/08
 
 ////////////////////////////////////////////////////////////////////////////////
 // Application
@@ -94,7 +94,7 @@ vars.enable = 1
 // Auth
 // Default authentication
 
-auth.enable = 1
+auth.enable = 0
 auth.user = microbe
 auth.pass = microbe
 
@@ -109,7 +109,7 @@ database.driver = mysqli
 database.host = localhost
 database.port = 3306
 database.user = user
-database.pass = 987654321qaz
+database.pass = pass
 database.base = test
 database.charset = utf8
 
