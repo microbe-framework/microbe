@@ -1,1 +1,23 @@
 
+Options +FollowSymLinks
+Options -ExecCGI
+Options -Includes
+Options -Indexes
+
+DirectoryIndex index.php index.html
+
+<FilesMatch "\\.(ico|jpg|png|gif|svg|swf|css|js|fon|ttf|eot|xml|pdf|flv)$">
+    ExpiresDefault M1209600
+    Header set Cache-Control "public, max-age=1209600"
+</FilesMatch>
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.jpeg|\.gif|\.bmp|\.css|\.js)$
+RewriteRule . index.php [L]
+
+# Redirect all 404 and 500 to the homepage
+#ErrorDocument 500 /
+#ErrorDocument 404 /
