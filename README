@@ -45,14 +45,14 @@ Please report about bugs.
              /routes.json  
              ...  
         /Classes  
-            /AppRouter.class.php  
-            /AppView.class.php  
+            /AppRouter.php  
+            /AppView.php  
             ...  
         /Controllers  
-            /AppController.class.php  
+            /AppController.php  
             ...  
         /Models  
-            /AppModel.class.php  
+            /AppModel.php  
             ...  
         /views/  
             ...  
