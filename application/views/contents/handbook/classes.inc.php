@@ -38,7 +38,7 @@ class AppHtml
 ...
 &lt;?php
 $appHtml = new \App\Classes\AppHtml();
-echo $appHtml->title('My page title');
+echo $appHtml->getTitle('My page title');
 ?&gt;
 ...
 </pre>
