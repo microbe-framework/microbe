@@ -6,7 +6,7 @@
  *     Class: Globals
  *     About: Application shared file-variables array
  *     Begin: 2017/05/01
- *   Current: 2019/04/02
+ *   Current: 2019/04/18
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -124,7 +124,7 @@ class Globals implements ArrayAccess
      * @param string $name
      * @return string
      */
-    public function get($name
+    public function get($name)
     {
         $path = $this->getVarPath($name);
         if (file_exists($path)) {
