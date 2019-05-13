@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP Framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: NewsController.php
  *     Class: NewsController
  *     About: AppController controller sample
@@ -28,13 +28,16 @@ namespace App\Controllers;
 
 use \Microbe\Library\Arrays;
 
+use \Microbe\Core\Registry;
+
 class NewsController extends \Microbe\Core\Controller
 {
     /**************************************************************************/
     // Actions
     /**************************************************************************/
 
-    public function insertAction($params) {
+    public function insertAction($params)
+    {
         if (is_array($params) == false)
             return;
 
@@ -45,7 +48,7 @@ class NewsController extends \Microbe\Core\Controller
             return;
 
     //  (new NewsModel($this->app))->insertNews($f_News, $f_Url);
-        $this->app->getObject('\App\Models\NewsModel')->insertNews($f_News, $f_Url);
+        Registry::getObject('\App\Models\NewsModel')->insertNews($f_News, $f_Url);
     }
 
     /**************************************************************************/
@@ -61,7 +64,7 @@ class NewsController extends \Microbe\Core\Controller
             return;
 
     //  (new NewsModel($this->app))->deleteNewsById($f_NewsId);
-        $this->app->getObject('\App\Models\NewsModel')->deleteNewsById($f_NewsId);
+        Registry::getObject('\App\Models\NewsModel')->deleteNewsById($f_NewsId);
     }
 
     /**************************************************************************/

@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP Framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: AuthController.php
  *     Class: AuthController
  *     About: AuthController controller sample
  *     Begin: 2019/03/25
- *   Current: 2019/03/25
+ *   Current: 2019/05/04
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -36,6 +36,21 @@ class AuthController extends \Microbe\Core\Controller
     // Actions
     /**************************************************************************/
 
+    public static function auth() {
+        if (isset($_COOKIE['sid']) == false)
+            return false;
+
+        $sid = $_COOKIE['sid'];
+    //  echo $sid;
+    //  $host = $this->app->getRequest()->getHost();
+    //  setcookie('sid', $sid, time() + (24*60*60), '/', $host);
+        setcookie('sid', $sid, time() + (24*60*60), '/');
+    //  Http::redirect($this->app->getCmsUrl());
+        return true;
+    }
+
+    /**************************************************************************/
+
     public function login() {
         $sid = Random::getString(16);
     //  echo $sid;
@@ -57,6 +72,7 @@ class AuthController extends \Microbe\Core\Controller
     /**************************************************************************/
 
     public function loginAction($params) {
+        
         if (is_array($params) == false)
             return;
 
