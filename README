@@ -45,14 +45,14 @@ Please report about bugs.
              /vars.json  
              /routes.json  
              ...  
-        /Classes  
+        /Classes/  
             /AppRouter.php  
             /AppView.php  
             ...  
-        /Controllers  
+        /Controllers/  
             /AppController.php  
             ...  
-        /Models  
+        /Models/  
             /AppModel.php  
             ...  
         /views/  
@@ -79,9 +79,9 @@ Please report about bugs.
             ...  
         ...  
     /framework/  
-        /library/  
+        /Library/  
             ...  
-        /classes/  
+        /Core/  
             ...  
         /Loader.php  
         ...
