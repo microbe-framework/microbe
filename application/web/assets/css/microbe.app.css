@@ -1,0 +1,575 @@
+/*******************************************************************************
+ *   Project: Microbe PHP Framework
+ *   Version: 0.1.3
+ *    Module: microbe.css
+ *     Class:
+ *     About: Minimal Cascading Style Sheet (CSS) for sample application
+ *     Begin: 2017/05/01
+ *   Current: 2019/05/01
+ *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ *   License: MIT license 
+ *    Source: https://github.com/microbe-framework/microbe/
+ ******************************************************************************/
+
+/******************************************************************************
+ *            This file is part of the Microbe PHP Framework.                 *
+ *                                                                            *
+ *         Copyright (c) 2017-2019 Microbe PHP Framework author               *
+ *                  <microbe-framework@protonmail.com>                        *
+ *                                                                            *
+ *            For the full copyright and license information,                 *
+ *                     please view the LICENSE file                           *
+ *              that was distributed with this source code.                   *
+ ******************************************************************************/
+
+/********************************************************************************
+ * Application styles
+ *******************************************************************************/
+
+body {
+/*font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;*/
+  font-family: 'Roboto-Regular',Verdana,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+}
+
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 200%;
+} 
+
+a,a:visited {
+  color: #336;
+  text-decoration: none;
+}
+a:hover {
+  color: #558;
+}
+
+/* Header */
+
+div.app-banner {
+  display: block;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  background-color: #eee;
+  padding-top: 30px;
+/*border-bottom: 1px solid #009;*/
+  border-bottom: 1px solid #66f;
+}
+
+div.app-banner h1 {
+  color: #009;
+}
+
+/* Footer */
+
+div.app-footer-spacer {
+  display: block;
+  float: left;
+  width: 100%;
+  height: 40px;
+}
+
+div.app-footer {
+  display: block;
+  float: left;
+  width: 100%;
+  min-height: 180px;
+  padding-top: 20px;
+  background-color: #009;
+  color: #fff;
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+  line-height: 1.2;
+}
+
+div.app-footer a {
+  color: #fff;
+}
+div.app-footer a:hover {
+  color: #ccf;
+}
+
+div.app-footer-left {
+  float: left;
+  width: 50%;
+  text-align: left;
+  vertical-align: top;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+div.app-footer-right {
+  float: left;
+  width: 50%;
+  text-align: right;
+  vertical-align: top;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+div.app-footer-bottom {
+  display: block;
+  float: left;
+  width: 100%;
+  padding-top: 20px;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+/* Navigation */
+
+div.app-nav {
+  display: block;
+  width: 100%;
+  height: 50px;
+/*text-align: center;*/
+  text-align: left;
+  padding-left: 32px;
+  background-color: #009;
+  color: #fff;
+  padding-top: 16px;
+  position: fixed;
+  z-index: 50;
+}
+
+div.app-nav-spacer {
+  display: block;
+  width: 100%;
+  height: 50px;
+}
+
+div.app-nav a {
+  color: #fff;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+div.app-nav a:hover {
+  color: #ccf;
+}
+
+/* App nav dropdown */
+
+div.app-nav-dropdown {
+  display: inline;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 767px) {
+
+  div.app-nav-dropdown ul {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+
+  div.app-nav-dropdown ul {
+    display: none;
+    position: absolute;
+    background-color: #009;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    top: 22px;
+    left: -4px;
+    width: 180px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+  }
+
+  div.app-nav-dropdown:hover ul {
+    display: block;
+  }
+
+  div.app-nav-dropdown ul > li {
+    list-style: none;
+    padding: 2px 0;
+  }
+
+  div.app-nav-dropdown ul > li > a {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  div.app-nav-dropdown ul > li > a:hover {
+    background-color: #fff;
+    color: #006;
+  }
+
+}
+
+/* Admin nav */
+
+div.admin-nav {
+  display: block;
+  width: 100%;
+  height: 50px;
+  text-align: left;
+  background-color: #009;
+  color: #fff;
+  padding-left: 32px;
+  padding-top: 16px;
+  position: fixed;
+  z-index: 50;
+}
+
+div.admin-nav-spacer {
+  display: block;
+  width: 100%;
+  height: 50px;
+}
+
+div.admin-nav a {
+  color: #fff;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+div.admin-nav a:hover {
+  color: #ccf;
+}
+
+/* Admin Controls */
+
+#adminUploadForm input[type="file"] {
+  display: none;
+}
+
+div.admin-browser {
+  min-height: 660px;
+}
+
+img.admin-image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+/*padding-top: 20px;*/
+  display: inline;
+}
+
+textarea.admin-textarea {
+  resize: none;
+  white-space: pre; /*nowrap;*/
+  overflow-wrap: normal;
+  overflow-x: scroll;
+  width: 100%;
+  height: 640px;
+  padding: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+input.admin-menu-input {
+  width: 80%;
+/*height: 16px;*/
+  margin-bottom: 4px;
+  padding: 0;
+  font-family: 'Roboto-Regular',Verdana,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+input.admin-menu-input-button {
+  width: 10%;
+/*height: 16px;*/
+  margin: 0 0 4px 0;
+  padding: 0;
+  font-family: 'Roboto-Regular',Verdana,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+/* Admin auth form */
+
+#admin-auth-form input {
+  width:  250px;
+  height: 25px;
+  margin: 8px 0px;
+}
+
+#admin-auth-form input[type='submit'] {
+  width:  120px;
+  height: 30px;
+}
+
+/* Admin vars browser */
+
+/*
+div.admin-vars div.microbe-container {
+  height: 32px;
+  vertical-align: middle;
+}*/
+
+div.admin-vars div.microbe-container div {
+  text-align: left;
+  vertical-align: middle;
+  padding: 4px 4px 4px 4px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+div.admin-vars div.microbe-container:nth-child(odd) {
+  background-color: #e0e0e0;
+}
+
+div.admin-vars div.microbe-container:first-child {
+  background-color: #ddf;
+}
+
+div.admin-vars div.microbe-container:first-child div {
+  text-align: center;
+  font-weight: bold;
+}
+
+div.admin-vars-item, div.admin-vars-type, div.admin-vars-value {
+  float: left;
+  position: relative;
+  min-height: 1px;
+  display: inline;
+}
+
+div.admin-vars-item {
+  width: 35%;
+}
+div.admin-vars-type {
+  width: 10%;
+}
+div.admin-vars-value {
+  width: 55%;
+}
+
+/* Admin left menu */
+
+/*div.admin-vars div.admin-vars-editor_ div {
+  text-align: left;
+  vertical-align: middle;
+  padding: 4px 4px 4px 4px;
+}*/
+
+#adminJsonForm input,select {
+  width: 100%;
+  margin: 0;
+  padding: 2px 0 2px 0;
+  border: 1px solid #ddd;
+  font-family: 'Roboto-Regular',Verdana,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #222;
+}
+
+#adminJsonForm option {
+  width: 100%;
+  margin: 0;
+  padding: 2px 0 2px 0;
+  border: 1px solid #ddd;
+  font-family: 'Roboto-Regular',Verdana,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #222;
+}
+
+#adminJsonForm option:checked {
+  background: olive linear-gradient(olive, olive);
+  color: blue;
+}
+
+/* Admin left menu */
+
+div.admin-menu {
+  display: block;
+}
+  
+div.admin-menu h4 {
+  margin-bottom: 0px;
+}
+
+div.admin-menu ul {
+  margin-top: 11px;
+  padding-left: 20px;
+}
+
+div.admin-menu li {
+  display: block;
+}
+
+div.admin-menu li > a {
+  padding-left: 6px;
+}
+
+div.admin-menu li > a.admin-menu-highlight {
+  color: #009;
+}
+
+div.admin-menu li[type='1'],li[type='7'] > a {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 767px) {
+  div.admin-menu {
+  /*display: none;*/
+  }
+}
+
+/* Left menu */
+
+div.app-menu {
+  display: block;
+/*padding-left: 40px;*/
+}
+
+div.app-menu ul {
+  padding-left: 20px;
+}
+
+div.app-menu li {
+  display: block;
+}
+
+div.app-menu li > a {
+  padding-left: 8px;
+}
+
+div.app-menu li > a.app-menu-highlight {
+  color: #009;
+}
+
+@media screen and (max-width: 767px) {
+  div.app-menu {
+    display: none;
+  }
+}
+
+/* Content */
+
+div.app-content {
+  display: block;
+  width: 100%;
+  min-height: 400px;
+  text-align: left;
+  color: #333;
+  padding: 20px;
+}
+
+div.app-content p {
+  text-indent: 15px;
+  text-align: justify;
+}
+
+div.app-content h2,h3,h4,h5,h6 {
+  color: #339;
+}
+
+div.app-content h3 {
+  text-align: center;
+}
+
+div.app-content h4 {
+  text-align: left;
+  padding-left: 15px;
+}
+
+div.app-content pre.app-pre {
+  font-size: 14px;
+  color: #006;
+/*padding-left: 15px;*/
+}
+
+div.app-content p.app-path {
+  text-indent: 0;
+  color: #060;
+}
+
+/* App table */
+
+table.app-table-parameters {
+  width: 100%;
+  background-color: #eee;
+}
+
+table.app-table-parameters thead {
+  height: 24px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #ccc;
+  color: #111;
+  padding: 5px;
+}
+
+table.app-table-parameters caption {
+  height: 24px;
+  font-weight: bold;
+  color: #111;
+}
+
+table.app-table-parameters td.app-table-cell-name {
+  text-align: center;
+  vertical-align: top;  
+/*font-weight: bold;*/
+  color: #006;
+  padding: 5px;
+}
+
+table.app-table-parameters td.app-table-cell-method {
+  text-align: left;
+  vertical-align: top;
+/*font-weight: bold;*/
+  color: #006;
+  padding: 5px;
+}
+
+table.app-table-parameters td.app-table-cell-description {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px;
+}
+
+table.app-table-parameters td.app-table-cell-default {
+  text-align: center;
+  vertical-align: top;
+  padding: 5px;  
+}
+
+table.app-table-parameters tbody > tr:nth-child(even) {
+  background-color: #ddf;
+}
+
+/* App span */
+
+div.app-content span.app-span-path {
+  color: #060;
+}
+
+div.app-content span.app-span-highlight {
+  color: #066;
+}
+
+/* App read more */
+
+div.app-content p.app-read-more {
+  padding-left: 0px;
+  padding-bottom: 20px;
+  text-align: left;
+}
+
+div.app-content p.app-read-more-last {
+  padding-left: 0px;
+  padding-bottom: 0px;
+  text-align: left;
+}
+
+/* App handbook navigator */
+
+div.app-handbook-nav {
+  padding: 10px 20px 20px 20px;
+}
+
+/* End */
