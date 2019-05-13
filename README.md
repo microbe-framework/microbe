@@ -33,7 +33,7 @@ Please report about bugs.
 1.7.  Edit variables in './application/configs/vars.json' (optional).  
 1.8.  Add data models in './application/Models/' (optional).  
 1.9.  Add controllers and edit action handlers in './application/Controllers/' (optional).  
-1.10.  Add classes to './application/Classes/' (optional).  
+1.10. Add classes to './application/Classes/' (optional).  
 1.11. Place Your layouts, templates, blocks in './application/views/' directory.  
 1.12. Enjoy.   
   
@@ -89,12 +89,13 @@ Please report about bugs.
 <h3>3. Changes.</h3>  
   
 <h4>Version 0.1.3 (2019 may 13)</h4>  
-1. Add administrator's web interface<br/>
-2. Add to class \Microbe\Library\Http response methods<br/>
-3. Make Registry class static<br/>
+1. Add administrator's web interface.<br/>
+2. Add to class \Microbe\Library\Http response methods.<br/>
+3. Make \Microbe\Core\Registry class static.<br/>
 4. Change directories structure.<br/>
-5. Change './web/assets/css/microbe.css'.<br/>
-6. Change './web/assets/js/microbe.js'.<br/>
+5. Add './application/web/assets/css/microbe.app.css'.<br/>
+6. Change './application/web/assets/css/microbe.css'.<br/>
+7. Change './application/web/assets/js/microbe.js'.<br/>
   
 <h4>Version 0.1.2 (2019 april 08)</h4>  
 1. Add PostgreSql database support (not tested).<br/>
