@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Router.php
  *     Class: Router
  *     About: Router based on URI regex routes
  *     Begin: 2017/05/01
- *   Current: 2019/04/03
+ *   Current: 2019/04/30
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -170,6 +170,14 @@ class Router
     protected $access                   = null;
 
     /**
+     * Defined by routing rules response MIME output format
+     * One of: none/text/html/json/xml/jpg/png etc
+     *
+     * @var mixed[]|mixed|null $format
+     */
+    protected $format                   = null;
+
+    /**
      * Defined by routing rules parameters
      *
      * @var mixed[]|mixed|null $params
@@ -244,14 +252,15 @@ class Router
     // Accessors
     /**************************************************************************/
 
-    /**
+    /*
      * Get framework facade class Application instance
      *
+     * [-] 2019/04/30 Marked to deletion as unused
      * @return Application
      */
-    public function &getApp() {
-        return $this->app;
-    }
+//  public function &getApp() {
+//      return $this->app;
+//  }
 
     /**************************************************************************/
 
@@ -421,12 +430,21 @@ class Router
     }
 
     /**
-     * Get value of 'schema' parameter router rule if exists
+     * Get value of 'allow' parameter router rule if exists
      *
      * @return mixed[]|mixed|null
      */
     public function &getAllow() {
         return $this->allow;
+    }
+
+    /**
+     * Get value of 'format' parameter router rule if exists
+     *
+     * @return mixed[]|mixed|null
+     */
+    public function &getFormat() {
+        return $this->format;
     }
 
     /**
@@ -529,8 +547,9 @@ class Router
      * @param string $path Path to file with routing rules, null by default
      * @return Router
      */
-    public function __construct(&$app, $path = null) {
-        $this->init($app, $path);
+//  public function __construct(&$app, $path = null) {
+    public function __construct($path = null) {
+        $this->init($path);
         $this->main();
     }
 
@@ -545,9 +564,9 @@ class Router
      * @param string $path Path to file with routing rules, null by default
      * @return void
      */
-    protected function init(&$app, $path = null) {
-
-        $this->app = &$app;
+    protected function init($path = null)
+    {
+        $this->app = &Registry::getApp();
 
         if (file_exists($path)) {
 
@@ -577,7 +596,8 @@ class Router
      *
      * @return string
      */
-    public function detectUrl() {
+    public function detectUrl()
+    {
         // In
         $host   = $this->getServerString('HTTP_HOST');
         $scheme = $this->getServerString('REQUEST_SCHEME');
@@ -612,7 +632,8 @@ class Router
      *
      * @return string
      */
-    public function detectUri() {
+    public function detectUri()
+    {
         $uri = $this->getServerString('REQUEST_URI');
         if (($length = strpos($uri, '?')) !== false)
             $uri = substr($uri, 0, $length);
@@ -630,7 +651,8 @@ class Router
      *
      * @return string
      */
-    public function detectPrefix() {
+    public function detectPrefix()
+    {
     //  echo $_SERVER['SCRIPT_FILENAME'].'<br>';
     //  echo $_SERVER['DOCUMENT_ROOT'].'<br>';
         $document_root = $this->getServerString('DOCUMENT_ROOT');
@@ -646,7 +668,8 @@ class Router
      * @param string $prefix
      * @return boolean
      */
-    protected function handlePrefix($prefix) {
+    protected function handlePrefix($prefix)
+    {
         if ($prefix) {
             $prefix = '/'.Url::adjust($prefix);
             $length = strlen($prefix);
@@ -712,11 +735,19 @@ class Router
             }
         }
 
-        // Regex
+        // Regexes
         $regex = Arrays::get($route, 'regex');
-        if ($regex) {        
+        if (is_string($regex)) {
             if (preg_match($regex, $value, $result)) {
                 return $result;
+            }
+        }
+        if (is_array($regex)) {
+            $regexes = &$regex;
+            foreach ($regexes as &$regex) {
+                if (preg_match($regex, $value, $result)) {
+                    return $result;
+                }
             }
         }
 
@@ -808,12 +839,14 @@ class Router
 
         // Parse URI
         if ($route = $this->getRoute($this->uri)) {
+
             $this->controller   = Arrays::get($route, 'controller');
             $this->action       = Arrays::get($route, 'action');
             $this->layout       = Arrays::get($route, 'layout');
             $this->template     = Arrays::get($route, 'template');
             $this->allow        = Arrays::get($route, 'allow');
             $this->access       = Arrays::get($route, 'access');
+            $this->format       = Arrays::get($route, 'format');
             $this->code         = Arrays::get($route, 'code');
             $this->exit         = Arrays::get($route, 'exit');
 
@@ -894,7 +927,8 @@ class Router
      *
      * @return boolean
      */
-    public static function hasInstance() {
+    public static function hasInstance()
+    {
         return (self::$instance != null);
     }
 

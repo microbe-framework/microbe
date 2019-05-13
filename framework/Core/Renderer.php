@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Renderer.php
  *     Class: Renderer
  *     About: Application renderer abstract class
  *     Begin: 2019/03/24
- *   Current: 2019/04/02
+ *   Current: 2019/05/01
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license 
@@ -84,32 +84,17 @@ abstract class Renderer
     protected $params                  = [];
 
     /**************************************************************************/
-    // Accessors
-    /**************************************************************************/
-
-    /**
-     * Application facade instance
-     *
-     * @var Application
-     */
-    public function &getApp() {
-        return $this->app;
-    }
-
-    /**************************************************************************/
     // Construct
     /**************************************************************************/
 
     /**
      * Create a Renderer instance
      *
-     * @param Application $app The application instance
      * @return Renderer
      */
-    public function __construct(&$app) {
-
-        $this->app    = &$app;
-
+    public function __construct()
+    {
+        $this->app    = &Registry::getApp();
         $this->config = &$this->app->getConfig();
         $this->router = &$this->app->getRouter();
 
@@ -196,13 +181,15 @@ abstract class Renderer
      * @return AppController
      */
     protected function &createAppController() {
-        return new AppController($this->app);
+        return new AppController();
     }
 
     /**
      * Create an controller instance by $controllerName
+     * Controller must be located in 'application/Controllers' directory
      *
      * [!] Use controller prefefined path '\App\Controllers\'
+     * [!] Use controller prefefined path '\Cms\Controllers\'
      * [?] That is not good
      * @return Controller|AppController
      */
@@ -210,9 +197,12 @@ abstract class Renderer
     {
     //  require_once $this->config->getControllerModule($controllerName);
         $controllerClassName = $this->config->getControllerClassName($controllerName);
-        $controllerClassName = '\\App\\Controllers\\'.$controllerClassName;
+        $prefix = $this->app->isCms() ? '\\Cms\\' : '\\App\\';
+    //  $controllerClassName = '\\App\\Controllers\\'.$controllerClassName;
+        $controllerClassName = $prefix . 'Controllers\\' . $controllerClassName;
     //  return new $controllerClassName($this->app);
-        return $this->app->getObject($controllerClassName);
+    //  echo $controllerClassName; exit;
+        return Registry::getObject($controllerClassName);
     }
 
     /**************************************************************************/ 

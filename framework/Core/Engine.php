@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Engine.php
  *     Class: Engine
  *     About: Application data process and render engine
@@ -52,21 +52,26 @@ class Engine
     // Render post data request
     const METHOD_POST                   = 0x05;
 
+    // Render text data request
+    const METHOD_TEXT                   = 0x06;
+
     // Render json data request
-    const METHOD_JSON                   = 0x06;
+    const METHOD_JSON                   = 0x07;
 
     // Render xml data request
-    const METHOD_XML                    = 0x07;
+    const METHOD_XML                    = 0x08;
 
     /**************************************************************************/
     // Renderer classes
 
     public static $classes = array(
         self::METHOD_NONE               => null,
+        // Response renderers
         self::METHOD_VIEW               => '\Microbe\Core\ViewRenderer',
         self::METHOD_LAYOUT             => '\Microbe\Core\LayoutRenderer',
         self::METHOD_TEMPLATE           => '\Microbe\Core\TemplateRenderer',
-    //  self::METHOD_GET                => '\Microbe\Core\GetRenderer',
+        // Request renderers
+        self::METHOD_GET                => '\Microbe\Core\GetRenderer',
         self::METHOD_POST               => '\Microbe\Core\PostRenderer',
         self::METHOD_JSON               => '\Microbe\Core\JsonRenderer',
         self::METHOD_XML                => '\Microbe\Core\XmlRenderer',
@@ -87,26 +92,16 @@ class Engine
     /**************************************************************************/
 
     /**
-     * Get framework facade class Application instance
-     *
-     * @return Application
-     */
-    public function &getApp() {
-        return $this->app;
-    }
-
-    /**************************************************************************/
-
-    /**
      * Process a data request
      * Detect a rendering method by router and render a response
      *
      * @param Application app
      * @return void
      */
-    public function __construct(&$app) {
+    public function __construct() {
 
-        $this->app = &$app;
+    //  $this->app = &$app;
+        $this->app = &Registry::getApp();
 
         $this->request();
         $this->response();
@@ -179,7 +174,7 @@ class Engine
     public function request() {
         $method = $this->getInputMethod();
         if ($class = $this->getClass($method)) {
-            new $class($this->app);
+            new $class();
         }
     }
 
@@ -200,7 +195,7 @@ class Engine
     public function response() {
         $method = $this->getOutputMethod();
         if ($class = $this->getClass($method)) {
-            new $class($this->app);
+            new $class();
         }
     }
 

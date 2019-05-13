@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Application.php
  *     Class: Application
  *     About: Application class
  *     Begin: 2017/05/01
- *   Current: 2019/04/04
+ *   Current: 2019/05/02
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -30,9 +30,51 @@ use \Microbe\Library\Arrays;
 use \Microbe\Library\Path;
 use \Microbe\Library\Timer;
 use \Microbe\Library\HttpRequest;
+use \Microbe\Library\Params;
+use \Microbe\Library\Globals;
 
 class Application
 {
+    /**************************************************************************/
+    // CMS
+
+    const CMS_URI                       = 'cms';
+
+    const CMS_PATH                      = 'cms';
+
+    const APP_PATH                      = 'application';
+
+    /**************************************************************************/
+    // Class constants
+
+    /**
+     * Application run in guest mode
+     *
+     * @var int GROUP_GUEST
+     */
+    const GROUP_GUEST                    = 0;
+
+    /**
+     * Application run in user mode
+     *
+     * @var int GROUP_USER
+     */
+    const GROUP_USER                     = 1;
+
+    /**
+     * Application run in administration mode
+     *
+     * @var int GROUP_ADMIN
+     */
+    const GROUP_ADMIN                    = 2;
+
+    /**
+     * Application run in super user mode
+     *
+     * @var int GROUP_SUPER
+     */
+    const GROUP_SUPER                   = 3;
+
     /**************************************************************************/
     // Class variables (unused)
 
@@ -154,12 +196,30 @@ class Application
      */
     protected $timer                    = null;
 
+    /**************************************************************************/
+
     /**
      * Application user
      *
      * @var int|null $user
      */
     protected $user                     = null;
+
+    /**
+     * Application user's group
+     *
+     * @var int|null $group
+     */
+    protected $group                    = self::GROUP_GUEST;
+
+    /**************************************************************************/
+
+    /**
+     * Application mode: administration or normal
+     *
+     * @var int $mode
+     */
+    protected $cms                      = false;
 
     /**************************************************************************/
     // Accessors
@@ -239,6 +299,8 @@ class Application
         return $this->timer;
     }
 
+    /**************************************************************************/
+
     /**
      * Get an application user if exists
      *
@@ -246,6 +308,63 @@ class Application
      */
     public function &getUser() {
         return $this->user;
+    }
+
+    /**
+     * Get an application user's group
+     *
+     * @return int
+     */
+    public function getGroup() {
+        return $this->group;
+    }
+
+    /**
+     * Get an application in guest mode or not
+     *
+     * @return bool
+     */
+    public function isGuest() {
+        return $this->group == self::GROUP_GUEST;
+    }
+
+    /**
+     * Get an application in user mode or not
+     *
+     * @return bool
+     */
+    public function isUser() {
+        return $this->group == self::GROUP_USER;
+    }
+
+    /**
+     * Get an application in administration mode or not
+     *
+     * @return bool
+     */
+    public function isAdmin() {
+        return $this->group == self::GROUP_ADMIN;
+    }
+
+    /**
+     * Get an application in root mode or not
+     *
+     * @return bool
+     */
+    public function isSuper() {
+        return $this->group == self::GROUP_SUPER;
+    }
+
+
+    /**************************************************************************/
+    
+    /**
+     * Get an application in CMS mode or not
+     *
+     * @return bool
+     */
+    public function isCms() {
+        return $this->cms;
     }
 
     /**************************************************************************/
@@ -413,71 +532,37 @@ class Application
     }
 
     /**************************************************************************/
+    // Url (Router proxy)
+    /**************************************************************************/
+
+    /**
+     * Get an application object url
+     *
+     * @param string $path null by default
+     * @return string
+     */
+    public function getCmsUrl($path = null) {
+        return $this->router->getUrl(self::CMS_URI . '/' . $path);
+    }
+
+    /**************************************************************************/
     // Config proxy
     /**************************************************************************/
 
     /**
-     * Get application configuration instance
+     * Get application configuration parameter value by $name
+     * If $name not specified return application configuration instance
      *
-     * @return Config
+     * @param  string $name
+     * @return string|mixed|Config
      */
-    public function &getConfig() {
+    public function &getConfig($name = null)
+    {
+        if ($name) {
+            $result = $this->config->get($name);
+            return $result;
+        }
         return $this->config;
-    }
-
-    /**
-     * Get by name application configuration parameter value
-     *
-     * @param string $name
-     * @return string|mixed
-     */
-    public function getConfigValue($name) {
-        return $this->config->get($name);
-    }
-
-    /**************************************************************************/
-
-    /**
-     * Get server path to view's block file by name if exists or null
-     *
-     * @param string $name
-     * @return string|null
-     */
-    public function getBlock($name) {
-        return $this->config->getBlockModule($name);
-    }
-
-    /**
-     * Get server path to view's layout file by name if exists or null
-     *
-     * @param string $name
-     * @return string|null
-     */
-    public function getLayout($name) {
-        return $this->config->getLayoutModule($name);
-    }
-  
-    /**
-     * Get server path to view's template file by name if exists or null
-     *
-     * @param string $name
-     * @return string|null
-     */
-    public function getTemplate($name) {
-        return $this->config->getTemplateModule($name);
-    }
-
-    /**************************************************************************/
-    // Registry
-
-    /**
-     * Return class instance use registry
-     *
-     * @param string $ckassName
-     * @return object|null
-     */
-    public function &getObject($className) {
-        return $this->registry->getObject($className);
     }
 
     /**************************************************************************/
@@ -520,6 +605,9 @@ class Application
     {
         // Init an application timer
         $this->initTimer();
+
+        // Init an application mode
+        $this->initCms();
 
         // Init an application objects registry
         $this->initRegistry();
@@ -572,14 +660,26 @@ class Application
     /**************************************************************************/
 
     /**
-     * Init an application config
+     * Detect CMS requests by URI
      *
      * @return void
      */
-    protected function initConfig()
+    protected function initCms()
     {
-        $this->config = new Config($this);
-        $this->root = $this->config->getRoot();
+        // Request URI
+        $uri = $_SERVER['REQUEST_URI'];
+
+        // Remove uri tail from ?
+        if (($tail = strpos($uri, '?')) !== false) {
+            $uri = substr($uri, 0, $tail);
+        }
+
+        $count = strlen(self::CMS_URI) + 1;
+        $b = boolval(substr($uri,   -1 * $count) =='/' . self::CMS_URI);
+        $a = boolval(substr($uri, 0, 1 + $count) =='/' . self::CMS_URI . '/');
+
+        $this->cms = ($a || $b);
+    //  echo $this->cms; exit;
     }
 
     /**************************************************************************/
@@ -615,6 +715,23 @@ class Application
         $this->timer->stop();
     }
 
+    /**************************************************************************/
+
+    /**
+     * Init an application config
+     * Init application $root variable
+     *
+     * @return void
+     */
+    protected function initConfig()
+    {
+        $this->config = new Config();
+        $this->root = $this->config->getRoot();
+
+        // Add config to registry
+        Registry::setConfig($this->config);
+    }
+
     /**************************************************************************/    
 
     /**
@@ -629,10 +746,14 @@ class Application
             return;
 
         $filepath  = $this->config->get('log.filepath');
-        $path      = $this->config->getCoalesce('log.directory', './tmp/logs');
-        $className = $this->config->getCoalesce('log.class', 'Microbe\Core\Log');
+        $logs      = $this->config->getLogs();
+        $path      = $this->config->getCoalesce('log.directory', $logs);
+        $className = $this->config->getCoalesce('log.class', '\Microbe\Core\Log');
  
-        $this->log = new $className($this, $filepath ? $filepath : $path);
+        $this->log = new $className($filepath ? $filepath : $path);
+
+        // Add vars to registry
+        Registry::setLog($this->log);
     }
 
     /**
@@ -661,7 +782,10 @@ class Application
             return;
 
         $path = $this->config->getGlobals();
-        $this->globals = new Globals($this, $path);
+        $this->globals = new Globals($path);
+
+        // Add vars to registry
+        Registry::setGlobals($this->globals);
     }
 
     /**************************************************************************/
@@ -679,7 +803,11 @@ class Application
             return;
 
         $path = $this->config->getVars();
-        $this->vars = new Vars($this, $path);
+    //  $this->vars = new Vars($this, $path);
+        $this->vars = new Params($path);
+
+        // Add vars to registry
+        Registry::setVars($this->vars);
     }
 
     /**************************************************************************/
@@ -689,7 +817,8 @@ class Application
      *
      * @return void
      */
-    protected function initRequest() {
+    protected function initRequest()
+    {
         $this->request = new HttpRequest();
     }
 
@@ -706,9 +835,18 @@ class Application
         if ($this->config->get('auth.enable') == false)
             return;
 
-        if ($sid = Arrays::get($_COOKIE, 'sid')) {
-        //  return $this->getObject('AuthModel')->queryUserBySid($sid);
+        // CMS authentication
+        if (\Cms\Controllers\AuthController::auth()) {
             $this->user = 'microbe';
+            $this->group = self::GROUP_SUPER;
+            return;
+        }
+
+        // Application authentication
+        if (\App\Controllers\AuthController::auth()) {
+            $this->user = 'microbe';
+            $this->group = self::GROUP_SUPER;
+            return;
         }
     }
 
@@ -730,9 +868,10 @@ class Application
             return $this->router;
 
         $routes = &$this->config->getRoutes();
-    //  $className = $this->config->getCoalesce('router.class', 'Microbe\Core\RouterEx');
-        $className = $this->config->getCoalesce('router.class', 'Microbe\Core\Router');
-        $this->router = $className ? new $className($this, $routes) : null;
+
+    //  $className = $this->config->getCoalesce('router.class', '\Microbe\Core\RouterEx');
+        $className = $this->config->getCoalesce('router.class', '\Microbe\Core\Router');
+        $this->router = $className ? new $className($routes) : null;
         return $this->router;
     }
 
@@ -752,7 +891,7 @@ class Application
             return $this->model;
 
         $className = $this->config->get('model.class');
-        $this->model = $className ? new $className($this, true) : null;
+        $this->model = $className ? new $className() : null;
         return $this->model;
     }
 
@@ -773,7 +912,7 @@ class Application
 
         $className = $this->config->getCoalesce('view.class', '\Microbe\Core\View');
 
-        $this->view = $className ? new $className($this, true) : null;
+        $this->view = $className ? new $className(true) : null;
         return $this->view;
     }
 
@@ -819,6 +958,9 @@ class Application
     //  $this->params = $this->router->getParamsArray(); // [?]
         $this->params = &$this->router->getParams(); // [?]
 
+        // Add params to registry
+        Registry::setParams($this->params);
+
         return false;
     }
 
@@ -837,14 +979,13 @@ class Application
      */
     protected function main()
     {
-
         // Route
         if ($this->route())
             return;
 
         // Process data and render
     //  Engine::execute($this);
-        new Engine($this);
+        new Engine();
     }
 
     /**************************************************************************/
@@ -856,7 +997,8 @@ class Application
      *
      * @return boolean
      */
-    public static function hasInstance() {
+    public static function hasInstance()
+    {
         return (self::$instance != null);
     }
 

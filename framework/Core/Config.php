@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Config.php
  *     Class: Config
  *     About: Application configuration class
  *     Begin: 2017/05/01
- *   Current: 2019/03/28
+ *   Current: 2019/04/30
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -31,10 +31,22 @@ use \Microbe\Library\Path;
 class Config extends \Microbe\Library\Params
 {
     /**************************************************************************/
-    // Applicatio entry point relation path
+    // CMS
 
-    const ENTRY_PATH                         = 'web/index.php';
-    const ENTRY_LENGTH                       = 13;
+    const CMS_URI                       = 'cms';
+
+    const CMS_PATH                      = 'cms';
+
+    const APP_PATH                      = 'application';
+
+    /**************************************************************************/
+    // File names
+
+    const VARS_FILE_NAME                = 'vars.json';
+
+    const CONFIG_FILE_NAME              = 'config.json';
+
+    const ROUTES_FILE_NAME              = 'routes.json';
 
     /**************************************************************************/
     // Class variables (unused)
@@ -70,11 +82,25 @@ class Config extends \Microbe\Library\Params
     // Absolute path
 
     /**
-     * Application directory
+     * Application site directory
      *
-     * @var string $application
+     * @var string $site
      */
-    protected $application              = null;
+    protected $site                     = null;
+
+    /**
+     * Application CMS directory
+     *
+     * @var string $cms
+     */
+    protected $cms                      = null;
+
+    /**
+     * Application working directory (CMS or site)
+     *
+     * @var string $current
+     */
+    protected $current                  = null;
 
     /**************************************************************************/
 
@@ -107,6 +133,38 @@ class Config extends \Microbe\Library\Params
      * @var string $routes
      */
     protected $routes                   = null;
+
+    /**************************************************************************/
+
+    /**
+     * Application configuration directory
+     *
+     * [?] Rename to something like configDirPath
+     * @var string $configs
+     */
+    protected $appConfigs               = null;
+
+    /**
+     * Application configuration file path
+     *
+     * [?] Rename to something like configFilePath
+     * @var string $config 
+     */
+    protected $appConfig                = null;
+
+    /**
+     * Application variables file path
+     *
+     * @var string $vars
+     */
+    protected $appVars                  = null;
+
+    /**
+     * Application routes file path
+     *
+     * @var string $routes
+     */
+    protected $appRoutes                = null;
 
     /**************************************************************************/
 
@@ -162,6 +220,50 @@ class Config extends \Microbe\Library\Params
      */
     protected $controllers              = null;
 
+    /**
+     * Application classes directory
+     *
+     * @var string $classes
+     */
+    protected $classes                  = null;
+
+    /**
+     * Application models directory
+     *
+     * @var string $models
+     */
+    protected $appModels                = null;
+
+    /**
+     * Application controllers directory
+     *
+     * @var string $controllers
+     */
+    protected $appControllers           = null;
+
+    /**
+     * Application classes directory
+     *
+     * @var string $classes
+     */
+    protected $appClasses               = null;
+
+    /*********************************************************************/
+
+    /**
+     * Application queries directory
+     *
+     * @var string $queries
+     */
+    protected $queries                  = null;
+
+    /**
+     * Application queries directory
+     *
+     * @var string $queries
+     */
+    protected $appQueries               = null;
+
     /*********************************************************************/
 
     /**
@@ -191,6 +293,46 @@ class Config extends \Microbe\Library\Params
      * @var string $templates
      */
     protected $templates                = null;
+
+    /*********************************************************************/
+
+    /**
+     * Application views directory
+     *
+     * @var string $appViews
+     */
+    protected $appViews                 = null;
+
+    /**
+     * Application blocks directory
+     *
+     * @var string $appBlocks
+     */
+    protected $appBlocks                = null;
+
+    /**
+     * Application layouts directory
+     *
+     * @var string $appLayouts
+     */
+    protected $appLayouts               = null;
+
+    /**
+     * Application templates directory
+     *
+     * @var string $appTemplates
+     */
+    protected $appLemplates             = null;
+
+    /**************************************************************************/
+    // Absolute web paths
+
+    /**
+     * Application web root directory
+     *
+     * @var string $web
+     */
+    protected $web                      = null;
 
     /**************************************************************************/
     // Relative web paths
@@ -231,6 +373,34 @@ class Config extends \Microbe\Library\Params
     protected $icons                    = null;
 
     /**
+     * Application banners directory
+     *
+     * @var string $banners
+     */
+    protected $banners                  = null;
+
+    /**
+     * Application audio directory
+     *
+     * @var string $audios
+     */
+    protected $audios                   = null;
+
+    /**
+     * Application video directory
+     *
+     * @var string $videos
+     */
+    protected $videos                   = null;
+
+    /**
+     * Application icons directory
+     *
+     * @var string $flashes
+     */
+    protected $flashes                  = null;
+
+    /**
      * Application fonts directory
      *
      * @var string $icons
@@ -268,8 +438,26 @@ class Config extends \Microbe\Library\Params
      *
      * @return string
      */
-    public function &getApplication() {
-        return $this->application;
+    public function &getSite() {
+        return $this->site;
+    }
+
+    /**
+     * Get an application CMS directory
+     *
+     * @return string
+     */
+    public function &getCms() {
+        return $this->cms;
+    }
+
+    /**
+     * Get an application working directory (CMS or site)
+     *
+     * @return string
+     */
+    public function &getCurrent() {
+        return $this->current;
     }
 
     /**************************************************************************/
@@ -307,6 +495,43 @@ class Config extends \Microbe\Library\Params
      */
     public function &getVars() {
         return $this->vars;
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Get an application configuration directory
+     *
+     * @return string
+     */
+    public function &getAppConfigs() {
+        return $this->appConfigs;
+    }
+
+    /**
+     * Get an application configuration file path
+     *
+     * @return string
+     */
+    public function &getAppConfig() {
+        return $this->appConfig;
+    }    
+
+    /**
+     * Get an application routes file path
+     * @return string
+     */
+    public function &getAppRoutes() {
+        return $this->appRoutes;
+    }
+
+    /**
+     * Get an application variables file path
+     *
+     * @return string
+     */
+    public function &getAppVars() {
+        return $this->appVars;
     }
 
     /**************************************************************************/
@@ -350,7 +575,6 @@ class Config extends \Microbe\Library\Params
     /**
      * Get an application cache directory path
      *
-     * [!] TODO
      * @return string
      */
     public function &getCache() {
@@ -375,6 +599,100 @@ class Config extends \Microbe\Library\Params
      */
     public function &getControllers() {
         return $this->controllers;
+    }
+
+    /**
+     * Get an application classes directory
+     *
+     * @return string
+     */
+    public function &getClasses() {
+        return $this->classes;
+    }
+
+    /**
+     * Get an application controllers directory
+     *
+     * @return string
+     */
+    public function &getAppModels() {
+        return $this->appModels;
+    }
+
+    /**
+     * Get an application controllers directory
+     *
+     * @return string
+     */
+    public function &getAppControllers() {
+        return $this->appControllers;
+    }
+
+    /**
+     * Get an application classes directory
+     *
+     * @return string
+     */
+    public function &getAppClasses() {
+        return $this->appClasses;
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Get an application queries directory
+     *
+     * @return string
+     */
+    public function &getQueries() {
+        return $this->queries;
+    }
+
+    /**
+     * Get an application queries directory
+     *
+     * @return string
+     */
+    public function &getAppQueries() {
+        return $this->appQueries;
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Get an application views directory
+     *
+     * @return string
+     */
+    public function &getAppViews() {
+        return $this->appViews;
+    }
+
+    /**
+     * Get an application layouts directory
+     *
+     * @return string
+     */
+    public function &getAppLayouts() {
+        return $this->appLayouts;
+    }
+
+    /**
+     * Get an application blocks directory
+     *
+     * @return string
+     */
+    public function &getAppBlocks() {
+        return $this->appBlocks;
+    }
+
+    /**
+     * Get an application templates directory
+     *
+     * @return string
+     */
+    public function &getAppTemplates() {
+        return $this->appTemplates;
     }
 
     /**************************************************************************/
@@ -414,7 +732,19 @@ class Config extends \Microbe\Library\Params
     public function &getTemplates() {
         return $this->templates;
     }
-    
+
+    /**************************************************************************/
+    // Absolute paths for web
+
+    /**
+     * Get an application web root directory
+     *
+     * @return string
+     */
+    public function &getWeb() {
+        return $this->web;
+    }
+
     /**************************************************************************/
     // Relative paths for web
 
@@ -464,6 +794,15 @@ class Config extends \Microbe\Library\Params
     }
 
     /**
+     * Get an application banners directory
+     *
+     * @return string
+     */
+    public function &getBanners() {
+        return $this->banners;
+    }
+
+    /**
      * Get an application fonts directory
      *
      * @return string
@@ -472,18 +811,221 @@ class Config extends \Microbe\Library\Params
         return $this->fonts;
     }
 
+    /**
+     * Get an application audio directory
+     *
+     * @return string
+     */
+    public function &getAudios() {
+        return $this->audios;
+    }
+
+    /**
+     * Get an application video directory
+     *
+     * @return string
+     */
+    public function &getVideos() {
+        return $this->videos;
+    }
+
+    /**
+     * Get an application flash directory
+     *
+     * @return string
+     */
+    public function &getFlashes() {
+        return $this->flashes;
+    }
+
+    /**************************************************************************/
+    // Absolute paths for web
+
+    /**
+     * Get an application assets directory
+     *
+     * @return string
+     */
+    public function getAppAssets() {
+        return Path::join($this->web, $this->assets);
+    }
+
+    /**
+     * Get an application asset
+     *
+     * @return string
+     */
+    public function getAppAsset($path = null) {
+        return Path::join($this->web, $this->assets . $path);
+    }
+
+    /**
+     * Get an application images directory
+     *
+     * @return string
+     */
+    public function getAppImages() {
+        return Path::join($this->web, $this->images);
+    }
+
+    /**
+     * Get an application image
+     *
+     * @return string
+     */
+    public function getAppImage($path = null) {
+        return Path::join($this->web, $this->images . $path);
+    }
+
+    /**
+     * Get an application icons directory
+     *
+     * @return string
+     */
+    public function getAppIcons() {
+        return Path::join($this->web, $this->icons);
+    }
+
+    /**
+     * Get an application icon
+     *
+     * @return string
+     */
+    public function getAppIcon($path = null) {
+        return Path::join($this->web, $this->icons . $path);
+    }
+
+    /**
+     * Get an application banners directory
+     *
+     * @return string
+     */
+    public function getAppBanners() {
+        return Path::join($this->web, $this->banners);
+    }
+
+    /**
+     * Get an application banner
+     *
+     * @return string
+     */
+    public function getAppBanner($path = null) {
+        return Path::join($this->web, $this->banners . $path);
+    }
+
+    /**
+     * Get an application fonts directory
+     *
+     * @return string
+     */
+    public function getAppFonts() {
+        return Path::join($this->web, $this->fonts);
+    }
+
+    /**
+     * Get an application font
+     *
+     * @return string
+     */
+    public function getAppFont($path = null) {
+        return Path::join($this->web, $this->fonts . $path);
+    }
+
+    /**
+     * Get an application audios directory
+     *
+     * @return string
+     */
+    public function getAppAudios() {
+        return Path::join($this->web, $this->audios);
+    }
+
+    /**
+     * Get an application audio
+     *
+     * @return string
+     */
+    public function getAppAudio($path = null) {
+        return Path::join($this->web, $this->audios . $path);
+    }
+
+    /**
+     * Get an application videos directory
+     *
+     * @return string
+     */
+    public function getAppVideos() {
+        return Path::join($this->web, $this->videos);
+    }
+
+    /**
+     * Get an application video
+     *
+     * @return string
+     */
+    public function getAppVideo($path = null) {
+        return Path::join($this->web, $this->videos . $path);
+    }
+
+    /**
+     * Get an application flashes directory
+     *
+     * @return string
+     */
+    public function getAppFlashes() {
+        return Path::join($this->web, $this->flashes);
+    }
+
+    /**
+     * Get an application flash
+     *
+     * @return string
+     */
+    public function getAppFlash($path = null) {
+        return Path::join($this->web, $this->flashes . $path);
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Get an application styles directory
+     *
+     * @return string
+     */
+    public function getAppStyles() {
+        return Path::join($this->web, $this->styles);
+    }
+
+    /**
+     * Get an application style
+     *
+     * @return string
+     */
+    public function getAppStyle($path = null) {
+        return Path::join($this->web, $this->styles . $path);
+    }
+
+    /**
+     * Get an application client-side scripts directory
+     *
+     * @return string
+     */
+    public function getAppScripts() {
+        return Path::join($this->web, $this->scripts);
+    }
+
+    /**
+     * Get an application client-side script
+     *
+     * @return string
+     */
+    public function getAppScript($path = null) {
+        return Path::join($this->web, $this->scripts . $path);
+    }
+
     /**************************************************************************/
     // Path
     /**************************************************************************/
-    //  $this->root = substr(__DIR__, 0, -1 * strlen('core/classes/'));
-    //  echo __DIR__.'<br>';
-    //  echo realpath(__DIR__).'<br>';
-    //  echo $this->root.'<br>';
-    //  print($_SERVER['PWD'] . "/" . $_SERVER['PHP_SELF']);
-    //  echo $_SERVER['SCRIPT_FILENAME'].'<br>';
-    //  echo $_SERVER['DOCUMENT_ROOT'].'<br>';
-    //  $this->root = substr($_SERVER['SCRIPT_FILENAME'], 0, -1 * strlen('index.php'));
-    //  exit();
 
     /**
      * Get application root directory path from $_SERVER['SCRIPT_FILENAME']
@@ -492,49 +1034,47 @@ class Config extends \Microbe\Library\Params
      * @return void
      */
     protected function initRoot() {
-    //  $this->root = substr($_SERVER['SCRIPT_FILENAME'], 0, -1 * strlen('index.php'));
-    //  $this->root = substr($_SERVER['SCRIPT_FILENAME'], 0, -9);
-    //  $this->root = substr($_SERVER['SCRIPT_FILENAME'], 0, -1 * strlen('web/index.php'));
-        $this->root = substr($_SERVER['SCRIPT_FILENAME'], 0, -13);
+    //  $this->root = dirname($_SERVER['SCRIPT_FILENAME'], 2) . DIRECTORY_SEPARATOR;
+        $this->root = dirname($_SERVER['SCRIPT_FILENAME'], 3) . DIRECTORY_SEPARATOR;
     }
 
     /**************************************************************************/
 
-    /**
+    /*
      * Return an absolute path by relative $path
      *
      * @param string $path
      * @return string
      */
-    protected function getPath($path) {
-        return Path::join($this->root, $path);
-    }
+//  protected function getFilePath($path) {
+//      return Path::join($this->root, $path);
+//  }
 
     /**************************************************************************/
 
-    /**
+    /*
      * Return an absolute value for $path
      *
      * @param string $path
      * @return string
      */
-    protected function getAbsolutePath($path) {
-        return Path::getAbsolutePath($this->root, $path);
-    }
+//  protected function getAbsolutePath($path) {
+//      return Path::getAbsolutePath($this->root, $path);
+//  }
 
-    /**
+    /*
      * Return an relative value for $path
      *
      * @param string $path
      * @return string
      */
-    protected function getRelativePath($path) {
-        return Path::getRelativePath($this->root, $path);
-    }
+//  protected function getRelativePath($path) {
+//      return Path::getRelativePath($this->root, $path);
+//  }
 
     /**************************************************************************/
 
-    /**
+    /*
      * Return an absolute value for $path $name $ext
      * $file is a file directory path
      * $name is a file name
@@ -545,12 +1085,12 @@ class Config extends \Microbe\Library\Params
      * @param string $ext
      * @return string
      */
-    protected function getAbsolutePathEx($path, $name, $ext) {
-        $path = $this->getAbsolutePath($path);
-        return Path::joinEx($path, $name, $ext);
-    }
+//  protected function getAbsolutePathEx($path, $name, $ext) {
+//      $path = $this->getAbsolutePath($path);
+//      return Path::joinEx($path, $name, $ext);
+//  }
 
-    /**
+    /*
      * Return an relative value for $path $name $ext
      * $file is a file directory path
      * $name is a file name
@@ -561,10 +1101,10 @@ class Config extends \Microbe\Library\Params
      * @param string $ext
      * @return string
      */
-    protected function getRelativePathEx($path, $name, $ext) {
-        $path = $this->getRelativePath($path);
-        return Path::joinEx($path, $name, $ext);
-    }
+//  protected function getRelativePathEx($path, $name, $ext) {
+//      $path = $this->getRelativePath($path);
+//      return Path::joinEx($path, $name, $ext);
+//  }
 
     /**************************************************************************/
     // Default file extension id '.inc.php'
@@ -587,7 +1127,7 @@ class Config extends \Microbe\Library\Params
     /**************************************************************************/
     // Default file extension id '.inc.php'
 
-    /**
+    /*
      * Return a path of class by $path $name $ext
      * $file is a file directory path
      * $name is a file name
@@ -598,13 +1138,13 @@ class Config extends \Microbe\Library\Params
      * @param string $ext
      * @return string
      */
-    protected function getClass($path, $name, $ext = '.class.php') {
-        return Path::joinEx($path, $name, $ext);
-    }
+//  protected function getClass($path, $name, $ext = '.php') {
+//      return Path::joinEx($path, $name, $ext);
+//  }
 
     /**************************************************************************/
 
-    /**
+    /*
      * Return a path of controller by $name
      *
      * [!] UNUSED: controller class path stored in AppLoader/Loader
@@ -647,12 +1187,59 @@ class Config extends \Microbe\Library\Params
 //  }
 
     /**
+     * Return an absolute views' module path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getAppView($path) {
+        return $this->getModule($this->appViews, $path, '.php');
+    }
+
+    /**
      * Return an absolute views' block module path by relative $path
      *
      * @param string $path
      * @return string
      */
-    public function getBlockModule($path) {
+    public function getAppBlock($path) {
+        return $this->getModule($this->appBlocks, $path, '.inc.php');
+    }
+
+    /**
+     * Return an absolute views' layout module path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getAppLayout($path) {
+    //  return $this->getModule($this->appLayouts, $path, '.inc.php');
+        return $this->getModule($this->appLayouts, $path, '.layout.php');
+    }
+
+    /**
+     * Return an absolute views' template module path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getAppTemplate($path) {
+        return $this->getModule($this->appTemplates, $path, '.inc.php');
+    }
+
+    /**************************************************************************/
+    
+//  protected function getViewsPath($path) {
+//      return Path::join($this->views, $path);
+//  }
+
+    /**
+     * Return an absolute views' block module path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getBlock($path) {
         return $this->getModule($this->blocks, $path, '.inc.php');
     }
 
@@ -662,7 +1249,7 @@ class Config extends \Microbe\Library\Params
      * @param string $path
      * @return string
      */
-    public function getLayoutModule($path) {
+    public function getLayout($path) {
     //  return $this->getModule($this->layouts, $path, '.inc.php');
         return $this->getModule($this->layouts, $path, '.layout.php');
     }
@@ -673,8 +1260,92 @@ class Config extends \Microbe\Library\Params
      * @param string $path
      * @return string
      */
-    public function getTemplateModule($path) {
+    public function getTemplate($path) {
         return $this->getModule($this->templates, $path, '.inc.php');
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Return an absolute query path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getQuery($path) {
+        return $this->getModule($this->queries, $path, '.sql');
+    }
+
+    /**
+     * Return an absolute query path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getAppQuery($path) {
+        return $this->getModule($this->appQueries, $path, '.sql');
+    }
+
+    /**************************************************************************/
+
+    /**
+     * Return an absolute model path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getModel($path) {
+        return $this->getModule($this->models, $path, '.php');
+    }
+
+    /**
+     * Return an absolute controller path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getController($path) {
+        return $this->getModule($this->controllers, $path, '.php');
+    }
+
+    /**
+     * Return an absolute class path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getClass($path) {
+        return $this->getModule($this->classes, $path, '.php');
+    }
+
+    /**
+     * Return an absolute model path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getAppModel($path) {
+        return $this->getModule($this->appModels, $path, '.php');
+    }
+
+    /**
+     * Return an absolute controller path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getAppController($path) {
+        return $this->getModule($this->appControllers, $path, '.php');
+    }
+
+    /**
+     * Return an absolute class path by relative $path
+     *
+     * @param string $path
+     * @return string
+     */
+    public function getAppClass($path) {
+        return $this->getModule($this->appClasses, $path, '.php');
     }
 
     /**************************************************************************/
@@ -688,35 +1359,20 @@ class Config extends \Microbe\Library\Params
      * @param string $path Path to configuration file, null by default
      * @return Config
      */
-    public function __construct(&$app, $path = null) {
+    public function __construct($path = null)
+    {
     //  parent::__construct();
-        $this->init($app, $path);
-    }
-
-//  private function __clone() { }
-
-//  private function __wakeup() { }
-
-    /**************************************************************************/
-    // Init
-    /**************************************************************************/
-
-    /**
-     * Config instance variables initializer and loader
-     *
-     * @param Application $app The application instance
-     * @param string $path Path to configuration file, null by default
-     * @return void
-     */
-    protected function init(&$app, $path = null) {
-
-        $this->app = &$app;
+        $this->app = &Registry::getApp();
 
         $this->initRoot();
 
         $this->loadDefault();
         $this->load($path);
     }
+
+//  private function __clone() { }
+
+//  private function __wakeup() { }
 
     /**************************************************************************/
     // Load default config
@@ -732,37 +1388,72 @@ class Config extends \Microbe\Library\Params
      */
     protected function loadDefault()
     {
-        // Absolute paths for application
+        // Check is admin mode or not
 
-        $this->application = $this->root.'application/';
+        $isCms                = $this->app->isCms();
 
-        $this->configs     = $this->application.'configs/';
-        $this->config      = $this->configs.'config.txt';
-        $this->vars        = $this->configs.'vars.json';
-        $this->routes      = $this->configs.'routes.json';
+        // Absolute paths for application, CMS and current
 
-    //  $this->controllers = $this->application.'controllers/';
-    //  $this->models      = $this->application.'models/';
+        $this->site           = $this->root.Application::APP_PATH.'/';
+        $this->cms            = $this->root.Application::CMS_PATH.'/';
+        $this->current        = $isCms ? $this->cms : $this->site;
 
-        $this->tmp         = $this->root.'tmp/';
-        $this->globals     = $this->tmp.'globals/';
-        $this->logs        = $this->tmp.'logs/';
-        $this->uploads     = $this->tmp.'uploads/';
+        // Current
 
-        $this->views       = $this->application.'views/';
-        $this->layouts     =&$this->views;
-        $this->blocks      =&$this->views;
-        $this->templates   = $this->views.'templates/';
+        $this->configs        = $this->current.'configs/';
+        $this->config         = $this->configs.'config.txt';
+        $this->vars           = $this->configs.'vars.json';
+        $this->routes         = $this->configs.'routes.json';
+
+        $this->controllers    = $this->current.'Controllers/';
+        $this->models         = $this->current.'Models/';
+        $this->classes        = $this->current.'Classes/';
+        $this->queries        = $this->current.'queries/';
+
+        $this->views          = $this->current.'views/';
+        $this->layouts        =&$this->views;
+        $this->blocks         =&$this->views;
+        $this->templates      = $this->views.'templates/';
+
+        // Application specific
+
+        $this->appConfigs     = $this->site.'configs/';
+        $this->appConfig      = $this->appConfigs.'config.txt';
+        $this->appVars        = $this->appConfigs.'vars.json';
+        $this->appRoutes      = $this->appConfigs.'routes.json';
+
+        $this->appControllers = $this->site.'Controllers/';
+        $this->appModels      = $this->site.'Models/';
+        $this->appClasses     = $this->site.'Classes/';
+        $this->appQueries     = $this->site.'queries/';
+
+        $this->appViews       = $this->site.'views/';
+        $this->appLayouts     =&$this->appViews;
+        $this->appBlocks      =&$this->appViews;
+        $this->appTemplates   = $this->appViews.'templates/';
+
+        // Common
+
+        $this->tmp            = $this->site.'tmp/';
+        $this->cache          = $this->tmp.'cache/';
+        $this->globals        = $this->tmp.'globals/';
+        $this->logs           = $this->tmp.'logs/';
+        $this->uploads        = $this->tmp.'uploads/';
+
+        $this->web            = $this->site.'web/';
 
         // Relative paths fow web
 
-    //  $this->assets      = $this->root.'web/assets/';
-        $this->assets      = './assets/';
-        $this->styles      = $this->assets.'css/';
-        $this->scripts     = $this->assets.'js/';
-        $this->fonts       = $this->assets.'fonts/';
-        $this->images      = $this->assets.'images/';
-        $this->icons       = $this->assets.'images/icons/';
+        $this->assets         = './assets/';
+        $this->styles         = $this->assets.'css/';
+        $this->scripts        = $this->assets.'js/';
+        $this->fonts          = $this->assets.'fonts/';
+        $this->images         = $this->assets.'images/';
+        $this->icons          = $this->assets.'icons/';
+        $this->banners        = $this->assets.'banners/';
+        $this->audios         = $this->assets.'audios/';
+        $this->videos         = $this->assets.'videos/';
+        $this->flashes        = $this->assets.'flashes/';
 
         return true;
     }
@@ -777,11 +1468,11 @@ class Config extends \Microbe\Library\Params
      * @param string $path Path to configuration file, null by default
      * @return void
      */
-    protected function load($path = null) {
+    protected function load($path = null)
+    {
         if (file_exists($path)) {
             $this->config = $path;
         }
-
         $this->loadFromFileEx($this->config);
     }
 
@@ -794,7 +1485,8 @@ class Config extends \Microbe\Library\Params
      *
      * @return boolean
      */
-    public static function hasInstance() {
+    public static function hasInstance()
+    {
         return (self::$instance != null);
     }
 

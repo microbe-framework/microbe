@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: View.php
  *     Class: View
  *     About: Application view's renderer
  *     Begin: 2017/05/01
- *   Current: 2019/04/02
+ *   Current: 2019/04/30
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -48,6 +48,13 @@ class View extends \Microbe\Library\Render
      */
     protected $app                      = null;
 
+    /**
+     * Application configuration class instance
+     *
+     * @var Config $config
+     */
+    protected $config                   = null;
+
     /**************************************************************************/
     // Buffer
 
@@ -78,6 +85,15 @@ class View extends \Microbe\Library\Render
      */
     public function &getApp() {
         return $this->app;
+    }
+
+    /**
+     * Get application config instance
+     *
+     * @return Config
+     */
+    public function &getConfig() {
+        return $this->config;
     }
 
     /**************************************************************************/
@@ -118,6 +134,7 @@ class View extends \Microbe\Library\Render
     /**
      * Get by name application vars value
      *
+     * [?]
      * @param string $name
      * @return mixed
      */
@@ -140,6 +157,7 @@ class View extends \Microbe\Library\Render
     /**
      * Set by name application vars value
      *
+     * [?]
      * @param string $name
      * @param mixed $value
      * @return void
@@ -163,23 +181,29 @@ class View extends \Microbe\Library\Render
     // Config proxy
     /**************************************************************************/
 
-    /**
-     * Get application configuration instance
-     *
-     * @return Config
-     */
-    public function &getConfig() {
-        return $this->app->getConfig();
-    }
-
-    /**
-     * Get by name application configuration parameter value
+    /*
+     * Get application configuration parameter value by $name
+     * If $name not specified return application configuration instance
      *
      * @param string $name
-     * @return string|mixed
+     * @return string|mixed|Config
      */
-    public function getConfigValue($name) {
-        return $this->app->getConfigValue($name);
+//  public function &getConfig($name = null) {
+//      return Registry::getConfig($name);
+//  }
+
+    /**************************************************************************/
+    // Registry proxy
+    /**************************************************************************/
+
+    /**
+     * Return class instance use registry
+     *
+     * @param string $ckassName
+     * @return object|null
+     */
+    public function &getObject($className) {
+        return Registry::getObject($className);
     }
 
     /**************************************************************************/
@@ -222,6 +246,7 @@ class View extends \Microbe\Library\Render
     /**
      * Get an application object absolute url
      *
+     * [?]
      * @param string $path
      * @return string
      */
@@ -232,6 +257,7 @@ class View extends \Microbe\Library\Render
     /**
      * Get an application object relative url
      *
+     * [?]
      * @param string $path
      * @return string
      */
@@ -242,192 +268,113 @@ class View extends \Microbe\Library\Render
     /**************************************************************************/
 
     /**
+     * Get an application admin object url
+     *
+     * [?]
+     * @param string $path null by default
+     * @return string
+     */
+    protected function getAdminUrl($path = null) {
+        return $this->app->getAdminUrl($path);
+    }
+
+    /**************************************************************************/
+
+    /**
      * Get a stylesheet file url
      *
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     protected function getStyle($path)
     {
-        $styles = $this->getConfig()->getStyles();
+        $styles = $this->config->getStyles();
         return $this->getUrl($styles.$path);
     }
-
-    /**
-     * Get a stylesheet file absolute url
-     *
-     * @param string $path
-     * @return string
-     */
-    protected function getAbsoluteStyle($path)
-    {
-        $styles = $this->getConfig()->getStyles();
-        return $this->getAbsoluteUrl($styles.$path);
-    }
-
-    /*
-     * Get a stylesheet file relative url
-     *
-     * @param string $path
-     * @return string
-     */
-//  protected function getRelativeStyle($path)
-//  {
-//      $styles = $this->app->getConfig()->getStyles();
-//      return $this->getRelativeUrl($styles.$path);
-//  }
-
-    /**************************************************************************/
 
     /**
      * Get a script file url
      *
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     protected function getScript($path)
     {
-        $scripts = $this->getConfig()->getScripts();
+        $scripts = $this->config->getScripts();
         return $this->getUrl($scripts.$path);
     }
 
     /**
-     * Get a script file absolute url
-     *
-     * @param string $path
-     * @return string
-     */
-    protected function getAbsoluteScript($path)
-    {
-        $scripts = $this->getConfig()->getScripts();
-        return $this->getAbsoluteUrl($scripts.$path);
-    }
-
-    /*
-     * Get a script file relative url
-     *
-     * @param string $path
-     * @return string
-     */
-//  protected function getRelativeScript($path)
-//  {
-//      $scripts = $this->app->getConfig()->getScripts();
-//      return $this->getRelativeUrl($scripts.$path);
-//  }
-
-    /**************************************************************************/
-
-    /**
      * Get an image file url
      *
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     protected function getImage($path)
     {
-        $images = $this->getConfig()->getImages();
+        $images = $this->config->getImages();
         return $this->getUrl($images.$path);
     }
-
-    /**
-     * Get an image file absolute url
-     *
-     * @param string $path
-     * @return string
-     */
-    protected function getAbsoluteImage($path)
-    {
-        $images = $this->getConfig()->getImages();
-        return $this->getAbsoluteUrl($images.$path);
-    }
-
-    /*
-     * Get an image file relative url
-     *
-     * @param string $path
-     * @return string
-     */
- // protected function getRelativeImage($path)
-//  {
- //     $images = $this->app->getConfig()->getImages();
- //     return $this->getRelativeUrl($images.$path);
- // }
-
-    /**************************************************************************/
 
     /**
      * Get an icon file url
      *
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     protected function getIcon($path)
     {
-        $images = $this->getConfig()->getIcons();
+        $images = $this->config->getIcons();
         return $this->getUrl($images.$path);
     }
 
     /**
-     * Get an icon file absolute url
-     *
-     * @param string $path
-     * @return string
-     */
-    protected function getAbsoluteIcon($path)
-    {
-        $images = $this->getConfig()->getIcons();
-        return $this->getAbsoluteUrl($images.$path);
-    }
-
-    /*
-     * Get an icon file relative url
-     *
-     * @param string $path
-     * @return string
-     */
- // protected function getRelativeIcon($path)
-//  {
- //     $images = $this->app->getConfig()->getIcons();
- //     return $this->getRelativeUrl($images.$path);
- // }
-
-    /**************************************************************************/
-
-    /**
      * Get a font file url
      *
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     protected function getFont($path)
     {
-        $styles = $this->getConfig()->getFonts();
+        $styles = $this->config->getFonts();
         return $this->getUrl($styles.$path);
     }
 
     /**
-     * Get a font file absolute url
+     * Get a font file url
      *
-     * @param string $path
+     * @param  string $path
      * @return string
      */
-    protected function getAbsoluteFont($path)
+    protected function getBanner($path)
     {
-        $styles = $this->getConfig()->getFonts();
-        return $this->getAbsoluteUrl($styles.$path);
+        $banners = $this->config->getBanners();
+        return $this->getUrl($banners.$path);
     }
 
-    /*
-     * Get a font file relative url
+    /**
+     * Get a font file url
      *
-     * @param string $path
+     * @param  string $path
      * @return string
      */
-//  protected function getRelativeFont($path)
-//  {
-//      $styles = $this->app->getConfig()->getFonts();
-//      return $this->getRelativeUrl($styles.$path);
-//  }
+    protected function getAudio($path)
+    {
+        $audios = $this->config->getAudios();
+        return $this->getUrl($audios.$path);
+    }
+
+    /**
+     * Get a font file url
+     *
+     * @param  string $path
+     * @return string
+     */
+    protected function getVideo($path)
+    {
+        $videos = $this->config->getFonts();
+        return $this->getUrl($videos.$path);
+    }
 
     /**************************************************************************/
     // Constructor
@@ -440,34 +387,21 @@ class View extends \Microbe\Library\Render
      * @param boolean $useBuffer Use an output buffer or not, true by default
      * @return View
      */
-    public function __construct(&$app, $useBuffer = true)
+    public function __construct($useBuffer = true)
     {
     //  parent::__construct();
-        $this->init($app, $useBuffer);
-    }
 
-//  private function __clone() { }
-
-//  private function __wakeup() { }
-
-    /**************************************************************************/
-    // Init
-
-    /**
-     * View instance variables initializer
-     *
-     * @param Application $app The application instance
-     * @param boolean $useBuffer Use an output buffer or not, true by default
-     * @return View
-     */
-    protected function init(&$app, $useBuffer = true)
-    {
-        $this->app = &$app;
+        $this->app    = &Registry::getApp();
+        $this->config = &Registry::getConfig();
 
         if ($this->useBuffer = $useBuffer) {
             ob_start();
         }
     }
+
+//  private function __clone() { }
+
+//  private function __wakeup() { }
 
     /**************************************************************************/
     // Done
@@ -501,9 +435,9 @@ class View extends \Microbe\Library\Render
      * - RENDER_FLAG_FILE
      * - RENDER_FLAG_BUFFER
      *
-     * @param string $render_buffer
-     * @param mixed[] $render_params
-     * @param int $render_flags Default value RENDER_FLAG_NONE
+     * @param  string $render_buffer
+     * @param  mixed[] $render_params
+     * @param  int $render_flags Default value RENDER_FLAG_NONE
      * @return string
      */
     protected function &render(
@@ -531,6 +465,8 @@ class View extends \Microbe\Library\Render
         // Inject application and renderer
         $render_params['me']  = &$this;
         $render_params['app'] = &$this->app;
+        $render_params['cfg'] = &$this->config;
+        $render_params['vars'] = &$vars;
     //  $render_params['req'] = &$this->app->getRequest();
 
         return parent::render($render_buffer, $render_params, $render_flags);
@@ -541,39 +477,39 @@ class View extends \Microbe\Library\Render
     /**
      * Render as php code a block by name with $params
      *
-     * @param string $name
-     * @param mixed[]]$params
+     * @param  string $name
+     * @param  mixed[]]$params
      * @return string
      */
     public function renderBlock($name, $params = null)
     {
-        $path = $this->app->getBlock($name);
+        $path = $this->config->getBlock($name);
         $this->renderFile($path, $params);
     }
 
     /**
      * Render as php code a layout by name with $params
      *
-     * @param string $name
-     * @param mixed[] $params
+     * @param  string $name
+     * @param  mixed[] $params
      * @return string
      */
     public function renderLayout($name, $params = null)
     {
-        $path = $this->app->getLayout($name);
+        $path = $this->config->getLayout($name);
         $this->renderFile($path, $params);
     }
 
     /**
      * Render as php code a template by name with $params
      *
-     * @param string $name
-     * @param mixed[]params
+     * @param  string $name
+     * @param  mixed[]params
      * @return string
      */
     public function renderTemplate($name, $params = null)
     {
-        $path = $this->app->getTemplate($name);
+        $path = $this->config->getTemplate($name);
         $this->renderFile($path, $params);
     }
 
@@ -584,12 +520,12 @@ class View extends \Microbe\Library\Render
     /**
      * Include in plain render output a block
      *
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function includeBlock($name)
     {
-        $path = $this->app->getBlock($name);
+        $path = $this->config->getBlock($name);
         $this->includeFile($path);
     }
 
@@ -601,7 +537,7 @@ class View extends \Microbe\Library\Render
      */
     public function includeTemplate($name)
     {
-        $path = $this->app->getTemplate($name);
+        $path = $this->config->getTemplate($name);
         $this->includeFile($path);
     }
 
@@ -612,8 +548,8 @@ class View extends \Microbe\Library\Render
     /**
      * Render as php code a string $buffer with $params
      *
-     * @param string|mixed $buffer
-     * @param mixed[] $params
+     * @param  string|mixed $buffer
+     * @param  mixed[] $params
      * @return string
      */
     protected function eval(&$buffer, $params = null)
@@ -629,8 +565,8 @@ class View extends \Microbe\Library\Render
      * Render as php code a file with $params
      *
      * [!] Danger to use! Potentially get access to filesystem
-     * @param string $path
-     * @param mixed[] $params
+     * @param  string $path
+     * @param  mixed[] $params
      * @return string
      */
     protected function file($path, $params = null)
@@ -645,8 +581,8 @@ class View extends \Microbe\Library\Render
     /**
      * Render as php code a block by name with $params
      *
-     * @param string $name
-     * @param mixed[] $params
+     * @param  string $name
+     * @param  mixed[] $params
      * @return string
      */
     protected function block($name, $params = null)
@@ -661,8 +597,8 @@ class View extends \Microbe\Library\Render
     /**
      * Render as php code a layout by name with $params
      *
-     * @param string $name
-     * @param mixed[] $params
+     * @param  string $name
+     * @param  mixed[] $params
      * @return string
      */
     protected function layout($name, $params = null)
@@ -677,8 +613,8 @@ class View extends \Microbe\Library\Render
     /**
      * Render as php code a template by name with $params
      *
-     * @param string $name
-     * @param mixed[] $params
+     * @param  string $name
+     * @param  mixed[] $params
      * @return string
      */
     protected function template($name, $params = null)
@@ -709,14 +645,14 @@ class View extends \Microbe\Library\Render
      * Single View instance creation method
      * For correct usage make method __construct private
      *
-     * @param Application $app The application instance
-     * @param boolean $useBuffer Use an output buffer or not, true by default
+     * @param  Application $app The application instance
+     * @param  boolean $useBuffer Use an output buffer or not, true by default
      * @return View
      */
-    public static function getInstance(&$app, $useBuffer = true)
+    public static function getInstance($useBuffer = true)
     {
         if (self::$instance == null) {
-            self::$instance = new self($app, $useBuffer);
+            self::$instance = new self($useBuffer);
         }
         return self::$instance;
     }

@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Controller.php
  *     Class: Controller
  *     About: Controller
  *     Begin: 2017/05/01
- *   Current: 2019/03/27
+ *   Current: 2019/04/30
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -58,7 +58,7 @@ class Controller
      * @var Router|RouterEx|AppRouter
      */
     protected $router                   = null;
-    
+
     /**
      * Application view class instance
      *
@@ -70,34 +70,25 @@ class Controller
     // Accessors
     /**************************************************************************/
 
-    /**
-     * Get framework facade class Application instance
-     *
-     * @return Application
-     */
-    public function &getApp() {
-        return $this->app;
-    }
-
-    /**
+    /*
      * Get application router instance
      *
      * @return Router|RouterEx|AppRouter
      */
-    protected function &getRouter() {
+//  protected function &getRouter() {
     //  return $this->getApp()->getRouter();
-        return $this->router;
-    }
+//      return $this->router;
+//  }
     
-    /**
+    /*
      * Get application view instance
      *
      * @return View|AppView
      */
-    protected function &getView() {
+//  protected function &getView() {
     //  return $this->getApp()->getView();
-        return $this->view;        
-    }
+//      return $this->view;        
+//  }
 
     /**************************************************************************/
     // Constructor
@@ -109,11 +100,13 @@ class Controller
      * @param Application $app The application instance
      * @return Controler
      */
-    function __construct(&$app) {
-        $this->app = &$app;
+    function __construct()
+    {
+    //  $this->app    = &$app;
+        $this->app    = &Registry::getApp();
     //  $this->buffer = $this->app->getBuffer();
-        $this->router =& $this->app->getRouter();
-        $this->view =& $this->app->getView();
+        $this->router = &$this->app->getRouter();
+        $this->view   = &$this->app->getView();
     }
 
     /**************************************************************************/
@@ -126,7 +119,8 @@ class Controller
      * @param int|false Http code of redirection, false by default (301)
      * @return null
      */
-    public function redirect($url, $code = false) {
+    public function redirect($url, $code = false)
+    {
         Http::redirect($url, $code);
         return null; // <= never executes
     }
@@ -141,7 +135,8 @@ class Controller
      *
      * @return null
      */
-    public function defaultAction() {
+    public function defaultAction()
+    {
         return null;
     }
 
@@ -154,7 +149,8 @@ class Controller
      *
      * @return boolean
      */
-    public static function hasInstance() {
+    public static function hasInstance()
+    {
         return (self::$instance != null);
     }
 
@@ -167,9 +163,10 @@ class Controller
      * @param Application $app The application instance
      * @return Controler
      */
-    public static function getInstance(&$app) {
+    public static function getInstance()
+    {
         if (self::$instance == null) {
-            self::$instance = new self($app);
+            self::$instance = new self();
         }
         return self::$instance;
     }

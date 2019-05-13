@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Model.php
  *     Class: Model
  *     About: Data model
  *     Begin: 2019/03/11
- *   Current: 2019/04/02
+ *   Current: 2019/04/30
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -29,16 +29,6 @@ namespace Microbe\Core;
 class Model extends \Microbe\Library\ProxyConnection
 {
     /**************************************************************************/
-    // Class variables (unused)
-
-    /**
-     * Static Model instance for single instance usage (singleton)
-     *
-     * @var Model
-     */
-    private static $instance            = null; 
-    
-    /**************************************************************************/
     // Instance variables
 
     /**
@@ -48,19 +38,12 @@ class Model extends \Microbe\Library\ProxyConnection
      */
     protected $app                      = null;
 
-    /**************************************************************************/
-    // Accessors
-    /**************************************************************************/
-
     /**
-     * Get framework facade class Application instance
+     * Application configuration class instance
      *
-     * @return Application
+     * @var Config $config
      */
-    public function &getApp()
-    {
-        return $this->app;
-    }
+    protected $config                   = null;
 
     /**************************************************************************/
     // Constructor
@@ -76,14 +59,17 @@ class Model extends \Microbe\Library\ProxyConnection
      * @param boolean $connect Connect to database or not, false by default
      * @return Model
      */
-    public function __construct(&$app)
+    public function __construct()
     {
-
         $this->connection = null;
 
-        $this->app        = &$app;
+    //  $this->app        = &$app;
+        $this->app        = &Registry::getApp();
 
-        $config           = &$this->app->getConfig();
+    //  $config           = &$this->app->getConfig();
+        $this->config     = &Registry::getConfig();
+
+        $config           = &$this->config;
 
         $driver           = $config->get('database.driver');
         $host             = $config->get('database.host');
@@ -96,35 +82,17 @@ class Model extends \Microbe\Library\ProxyConnection
     }
 
     /**************************************************************************/
-    // Singleton (unused)
-    /**************************************************************************/
 
     /**
-     * Return true if Model is instantiated or false otherwise
+     * Execute the named query $queryName and return a result
      *
-     * @return boolean
+     * @param  string $queryName
+     * @return mixed
      */
-    public static function hasInstance()
+    public function run($queryName)
     {
-        return (self::$instance != null);
-    }
-
-    /**************************************************************************/
-
-    /**
-     * Single Model instance creation method
-     * For correct usage make method __construct private
-     *
-     * @param Application $app The application instance
-     * @param boolean $connect Connect to database or not, false by default
-     * @return Model
-     */
-    public static function getInstance(&$app)
-    {
-        if (self::$instance == null) {
-            self::$instance = new self($app);
-        }
-        return self::$instance;
+        $queryFile = $this->config->getQuery($queryName);
+        return $this->queryFile($queryFile);
     }
 
     /**************************************************************************/

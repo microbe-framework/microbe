@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Application.php
- *     Class: MainLog
- *     About: Main application log class
+ *     Class: Log
+ *     About: Default application logger class
  *     Begin: 2019/03/25
- *   Current: 2019/04/02
+ *   Current: 2019/04/30
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -28,7 +28,7 @@ namespace Microbe\Core;
 
 use \Microbe\Library\CloudFlare;
 
-class Log extends \Microbe\Core\Library\Log
+class Log extends \Microbe\Library\Log
 {
     /**************************************************************************/
     // Instance variables
@@ -41,19 +41,6 @@ class Log extends \Microbe\Core\Library\Log
     protected $app                      = null;
 
     /**************************************************************************/
-    // Accessors
-    /**************************************************************************/
-
-    /**
-     * Get framework facade class Application instance
-     *
-     * @return Application
-     */
-    public function &getApp() {
-        return $this->app;
-    }
-
-    /**************************************************************************/
     // Constructor
 
     /**
@@ -63,12 +50,11 @@ class Log extends \Microbe\Core\Library\Log
      * @param string $path
      * @return void
      */
-    public function __construct(&$app, $path)
+    public function __construct($path)
     {
     	parent::__construct($path);
-    	$this->app     = &$app;
-    //  $this->request = &$this->app->getRequest(); // ???
-    //  $this->timer   = &$this->app->getTimer();   // ???
+
+        $this->app = &Registry::getApp();
     }
 
 	/**************************************************************************/
