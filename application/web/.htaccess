@@ -1,1 +1,31 @@
+Options +FollowSymLinks
+Options -ExecCGI
+Options -Includes
+Options -Indexes
 
+DirectoryIndex index.php index.html
+
+#AddType application/x-httpd-php .php
+#AddType text/css css
+#AddType text/javascript js
+
+#SetEnvIf REMOTE_ADDR 192.168.1.2 REDIR="local"
+#RewriteCond %{REDIR} local
+#RewriteRule ^/$ /data.html
+
+<FilesMatch "\\.(ico|bmp|jpg|png|gif|svg|swf|css|js|fon|ttf|eot|woff|txt|xml|pdf|flv)$">
+    ExpiresDefault M1209600
+    Header set Cache-Control "public, max-age=1209600"
+</FilesMatch>
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/cms [OR]
+RewriteCond %{REQUEST_URI} !\.(ico|bmp|jpg|png|gif|svg|swf|css|js|fon|ttf|eot|woff|txt|xml|pdf|flv)$ [NC]
+RewriteRule . index.php [L]
+
+# Redirect all 404 and 500 to the homepage
+#ErrorDocument 500 /
+#ErrorDocument 404 /
