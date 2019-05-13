@@ -5,11 +5,11 @@ use \Microbe\Library\DateTimes as DateTimes;
 $request = $this->app->getRequest();
 $timer = $this->app->getTimer();
 
-$microbe_source_service_name = $this->getConfigValue('microbe.source.service.name');
-$microbe_source_service_url  = $this->getConfigValue('microbe.source.service.url');
+$microbe_source_service_name = $cfg->get('microbe.source.service.name');
+$microbe_source_service_url  = $cfg->get('microbe.source.service.url');
 
-$microbe_license_type = $this->getConfigValue('microbe.license.type');
-$microbe_license_url  = $this->getConfigValue('microbe.license.url');
+$microbe_license_type = $cfg->get('microbe.license.type');
+$microbe_license_url  = $cfg->get('microbe.license.url');
 
 ?>
 
@@ -18,13 +18,11 @@ $microbe_license_url  = $this->getConfigValue('microbe.license.url');
 
 <div class="app-footer">
   <div class="app-footer-left">
-    Project: <?=$this->getConfigValue('microbe.caption')?>
+    Project: <?=$cfg->get('microbe.caption')?>
     <br>
-    Version: <?=$this->getConfigValue('microbe.version')?>
+    Version: <?=$cfg->get('microbe.version')?> (<?=$cfg->get('microbe.edition')?>)
     <br>
-    Edition: <?=$this->getConfigValue('microbe.edition')?>
-    <br>
-    Release: <?=$this->getConfigValue('microbe.release.date')?>
+    Release: <?=$cfg->get('microbe.release.date')?>
     <br>
     Source: <a href="<?=$microbe_source_service_url?>" target="_blank"><?=$microbe_source_service_name?></a>
     <br>
@@ -47,7 +45,7 @@ $microbe_license_url  = $this->getConfigValue('microbe.license.url');
     <br>
   </div>
   <div class="app-footer-bottom">
-    <?=$this->getConfigValue('microbe.copyright')?>
+    <?=$cfg->get('microbe.copyright')?>
   </div>
 </div>
 
