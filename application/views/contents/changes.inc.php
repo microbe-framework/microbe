@@ -4,6 +4,16 @@
       <h3>
         Changes
       </h3>
+      <h4>Version 0.1.3 (2019 may 13)</h4>
+      <ul>
+        <li>Add administrator's web interface.
+        <li>Add to class <span class="app-span-highlight">\Microbe\Library\Http</span> response methods.
+        <li>Make class <span class="app-span-highlight">\Microbe\Core\Registry</span> class static.
+        <li>Change directories structure.
+        <li>Add <span class="app-span-highlight">'./application/web/assets/css/microbe.app.css'</span>.
+        <li>Change <span class="app-span-highlight">'./application/web/assets/css/microbe.css'</span>.
+        <li>Change <span class="app-span-highlight">'./application/web/assets/js/microbe.js'</span>.
+      </ul>
       <h4>Version 0.1.2 (2019 april 08)</h4>
       <ul>
         <li>Remake render engine.
