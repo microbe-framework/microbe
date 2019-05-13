@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP Framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: AppModel.php
  *     Class: AppModel
  *     About: Application data model
@@ -31,8 +31,8 @@ class UserModel extends \Microbe\Core\Model
     /**************************************************************************/
     // Place Your code here
 
-//  public function __construct(&$app) {
-//     parent::__construct($app);
+//  public function __construct() {
+//     parent::__construct();
 //  }
 
     /**************************************************************************/

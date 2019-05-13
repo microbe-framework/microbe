@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP Framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: AppModel.php
  *     Class: AppModel
  *     About: Application data model
@@ -35,8 +35,8 @@ class AppModel extends \Microbe\Core\Model
 
     /**************************************************************************/
 
-    public function __construct(&$app) {
-        parent::__construct($app);
+    public function __construct() {
+        parent::__construct();
         $this->users = &$this->queryUsers();
     }
 
