@@ -836,11 +836,12 @@ class Application
             return;
 
         // CMS authentication
-        if (\Cms\Controllers\AuthController::auth()) {
-            $this->user = 'microbe';
-            $this->group = self::GROUP_SUPER;
-            return;
-        }
+        // Temporarily not used
+//      if (\Cms\Controllers\AuthController::auth()) {
+//          $this->user = 'microbe';
+//          $this->group = self::GROUP_SUPER;
+//          return;
+//      }
 
         // Application authentication
         if (\App\Controllers\AuthController::auth()) {
