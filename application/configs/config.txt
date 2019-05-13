@@ -99,6 +99,13 @@ auth.user = microbe
 auth.pass = microbe
 
 ////////////////////////////////////////////////////////////////////////////////
+// CMS
+
+cms.enable = 0
+cms.user = microbe
+cms.pass = microbe
+
+////////////////////////////////////////////////////////////////////////////////
 // Database
 // At this moment framework support 'mysqli' and 'postgres' drivers only
 // If 'database.driver' not defined an application will not connect to database
