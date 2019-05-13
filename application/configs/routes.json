@@ -1,6 +1,6 @@
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: routes.json
  *     Class:
  *     About: Basic routes and filters sample (JSON syntax with comments)
@@ -59,7 +59,15 @@
         // => appController->pageAction($page)
         // URI: '/[about,articles,changes,contacts,directories,handbook,license]'
         {
-            "match": ["/about", "/articles", "/changes", "/contacts", "/directories", "/handbook", "/license"],
+            "match": [
+                "/about",
+                "/articles",
+                "/changes",
+                "/contacts",
+                "/directories",
+                "/handbook",
+                "/license"
+            ],
             "controller": "app",
             "action": "page",
             "params": {"page": "${1}"}
