@@ -20,11 +20,11 @@
       </h4>
       <ul>
         <li>Unzip or git clone package in root application directory.
-        <li>Site documents' root must be <span class="app-span-highlight">'./web/'</span> directory.
+        <li>Site documents' root must be <span class="app-span-highlight">'./application/web/'</span> directory.
         <li>Enable <span class="app-span-highlight">mod_rewrite</span>
-            for <span class="app-span-highlight">'./web/'</span> directory.
-        <li>Correct <span class="app-span-highlight">'./web/.htaccess'</span>
-            and <span class="app-span-highlight">'./web/index.php'</span>  (optional).
+            for <span class="app-span-highlight">'./application/web/'</span> directory.
+        <li>Correct <span class="app-span-highlight">'./application/web/.htaccess'</span>
+            and <span class="app-span-highlight">'./application/web/index.php'</span>  (optional).
         <li>Edit config in
             <span class="app-span-highlight">'./application/configs/config.txt'</span>.
         <li>Edit routes in 
