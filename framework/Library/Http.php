@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Http.php
  *     Class: Http
  *     About: Http routines 
@@ -55,6 +55,64 @@ class Http
 //      header('Location: '.$url, true, $httpCode);
 //      die();
 //  }
+
+    /**************************************************************************/
+
+    public static function response($contentType, $content, $httpCode = 200)
+    {
+        header('Content-Type: ' . $contentType);
+        http_response_code($httpCode);
+        echo $content;
+        return exit();
+    }
+
+    public static function htmlResponse($content, $httpCode = 200)
+    {
+        return self::response('text/html', $content, $httpCode);
+    }
+
+    public static function textResponse($content, $httpCode = 200)
+    {
+        return self::response('text/plain', $content, $httpCode);
+    }
+
+    public static function cssResponse($content, $httpCode = 200)
+    {
+        return self::response('text/css', $content, $httpCode);
+    }
+
+    public static function jsonResponse($content, $httpCode = 200)
+    {
+        return self::response('application/json', $content, $httpCode);
+    }
+
+    public static function jsonpResponse($content, $httpCode = 200)
+    {
+        return self::response('application/javascript', $content, $httpCode);
+    }
+
+    public static function jpegResponse($content, $httpCode = 200)
+    {
+        return self::response('image/jpeg', $content, $httpCode);
+    }
+
+    public static function pngResponse($content, $httpCode = 200)
+    {
+        return self::response('image/png', $content, $httpCode);
+    }
+
+    /**************************************************************************/
+
+    public static function download($contentType, $content, $fileName, $httpCode = 200)
+    {
+        header('Content-Type: ' . $contentType);
+    //  header('Content-Length: ' . strlen($content));
+        if ($fileName)
+            header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        http_response_code($httpCode);
+        echo $content;
+        return exit();
+    }
 
     /***************************************************************************/
 }

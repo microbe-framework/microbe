@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Params.php
  *     Class: Params
  *     About: Params collection
@@ -28,6 +28,50 @@ namespace Microbe\Library;
 
 class Params extends Collection
 {
+    /**************************************************************************/
+    // Instance variables
+
+    /**
+     * Path to parameters file
+     *
+     * @var string $path
+     */
+    protected $path                     = null;
+
+    /**************************************************************************/
+    // Accessors
+    /**************************************************************************/
+
+    /**
+     * Return a path to directory with global variables
+     * If variable $path not initialized return null
+     *
+     * @return string|null
+     */
+    public function getPath() {
+        return $this->path;
+    }
+
+    /**************************************************************************/
+    // Construct
+    /**************************************************************************/
+
+    /**
+     * Create a Params instance
+     * Vars are application variables
+     * Load Vars from file by $path if defined
+     *
+     * @param Application $app The application instance
+     * @param string $path The application variables file path
+     * @return Params
+     */
+    public function __construct($path = null) {
+    //  parent::__construct();
+        if ($this->path = $path) {
+            $this->loadFromFileEx($this->path);
+        }
+    }
+
     /**************************************************************************/
     // Parameters substitution
     /**************************************************************************/

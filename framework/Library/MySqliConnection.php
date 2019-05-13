@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: MySqliConnection.php
  *     Class: MySqliConnection
  *     About: MySqli connection handler

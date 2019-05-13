@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Path.php
  *     Class: Path
  *     About: Path helper (linux/unix only)
  *     Begin: 2017/05/01
- *   Current: 2019/04/02
+ *   Current: 2019/04/27
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license 
@@ -184,6 +184,25 @@ class Path
     /**************************************************************************/
 
     /**
+     * Get $path extenstion or null if has't
+     * Lowercase without dot
+     * Do slashes and dots count correction
+     *
+     * @param string $path
+     * @return string
+     */
+    public static function getExtention($path) {
+        $result = null;
+        $lastDot = intval(strrpos($path, '.'));
+        $lastSlash = intval(strrpos($path, '/'));
+    //  echo $lastDot . ' ' . $lastSlash . '<br>';        
+        if ($lastDot > $lastSlash) {
+            $result = strtolower(substr($path, 1 + $lastDot));
+        }
+        return $result;
+    }
+
+    /**
      * Append string $ext to filename $name if filename hav't any extention
      * Do slashes and dots count correction
      *
@@ -205,13 +224,14 @@ class Path
      * Then join $path with $name
      * Do slashes and dots count correction
      *
+     * [!] 2019/04/27 If $name == '' don't add any extention
      * @param string $path
      * @param string $name
      * @param string $ext
      * @return string
      */
     public static function joinEx($path, $name, $ext) {
-        $name = self::setExtention($name, $ext);
+        $name = $name ? self::setExtention($name, $ext) : $name;
         return self::join($path, $name);
     }
 

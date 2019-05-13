@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Application.php
  *     Class: Log
  *     About: Log class
@@ -233,7 +233,7 @@ class Log
     		return false;
 
         return file_put_contents($this->filepath, $this->buffer, FILE_APPEND | LOCK_EX);
-	}
+    }
 
 	/**************************************************************************/
 

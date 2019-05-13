@@ -1,12 +1,12 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: Collection.php
  *     Class: Collection
  *     About: Collection is php build-in array object wrapper
  *     Begin: 2017/05/01
- *   Current: 2019/04/02
+ *   Current: 2019/04/15
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -128,6 +128,39 @@ class Collection implements \ArrayAccess, \IteratorAggregate
     }
 
     /**************************************************************************/
+
+    /**
+     * Set element with $key to $value
+     *
+     * @param  mixed $key
+     * @param  mixed $value
+     * @return mixed
+     */
+    public function assign($key, $value)
+    {
+        if ($this->noActive()) return false;
+
+        return $this->items[$key] = $value;
+    }
+
+    /**
+     * Set element with $key to $value by reference
+     *
+     * [!] PHP automatically assign objects by reference
+     * @param  mixed $key
+     * @param  mixed $value
+     * @return mixed
+     */
+    public function &assignRef($key, &$value)
+    {
+        if ($this->noActive()) return false;
+
+        $this->items[$key] = &$value;
+
+        return $value;
+    }
+
+    /**************************************************************************/
     // !!! required for implements ArrayAccess
 
     /**
@@ -152,7 +185,7 @@ class Collection implements \ArrayAccess, \IteratorAggregate
     public function get($key) {
     
         if ($this->noActive()) return null;
-        
+
     //  if (!array_key_exists($key, $this->items)) return null;
         if (isset($this->items[$key]) == false) return null;
 
@@ -422,6 +455,31 @@ class Collection implements \ArrayAccess, \IteratorAggregate
         }
 
         return null;
+    }
+
+    /**************************************************************************/
+    // Hydration
+    
+    /**
+     * Hydrate and return field value
+     *
+     * @return mixed|null
+     */
+    public function &hydrate($name) {
+        $value = $this->get($name);
+        $this->{$name} = $value;
+        return $value;
+    }
+
+    /**
+     * Hydrate all
+     *
+     * @return null
+     */
+    public function hydrateAll() {
+        foreach ($this->items as $name => $value) {
+            $this->{$name} = $value;
+        }
     }
 
     /**************************************************************************/
