@@ -1,7 +1,7 @@
 <?php
 /*******************************************************************************
  *   Project: Microbe PHP Framework
- *   Version: 0.1.2
+ *   Version: 0.1.3
  *    Module: AppRouter.php
  *     Class: AppRouter
  *     About: AppRouter sample
