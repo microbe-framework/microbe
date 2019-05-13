@@ -6,7 +6,7 @@
  *     Class: Loader
  *     About: Classes loader (PSR-4 incompatible)
  *     Begin: 2019/03/11
- *   Current: 2019/04/08
+ *   Current: 2019/05/01
  *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
  * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
  *   License: MIT license
@@ -29,13 +29,29 @@ namespace Microbe;
 class Loader
 {
     /**************************************************************************/
+    // CMS
+
+    const CMS_URI                       = 'cms';
+
+    const CMS_PATH                      = 'cms';
+
+    const APP_PATH                      = 'application';
+
+    /**************************************************************************/
+
+    /*
+     * CMS
+     *
+     * @var boolean $cms
+     */
+//  public static $cms                  = false;
 
     /**
      * Application entry point directory
      *
      * @var string $root
      */
-    public static $root = null;
+    public static $root                 = null;
 
     /**************************************************************************/
 
@@ -47,7 +63,8 @@ class Loader
     public static $namespaces = array(
         'Microbe' => './framework/',
         'Vendor'  => './vendor/',
-        'App'     => './application/'
+        'App'     => './' . self::APP_PATH . '/',
+        'Cms'     => './' . self::CMS_PATH . '/',
     );
 
     /**************************************************************************/
@@ -74,11 +91,44 @@ class Loader
         }
 
         $prefix = ltrim($prefix, '.');
-        $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+        $class  = str_replace('\\', DIRECTORY_SEPARATOR, $class);
 
-        $path = self::$root . $prefix . $class . '.php';
-
+        $path   = self::$root . $prefix . $class . '.php';
+    //  echo $path.'<br>';
         return require($path);
+    }
+
+    /**************************************************************************/
+    // [-] Unused
+    // [-] Marked to deletion
+
+    /*
+     * Detect an CMS mode
+     *
+     * @return void
+     */
+/*  protected static function detectCms()
+    {
+        // Request URI
+        $uri = $_SERVER['REQUEST_URI'];
+
+        // Remove uri tail from ?
+        if (($tail = strpos($uri, '?')) !== false) {
+            $uri = substr($uri, 0, $tail);
+        }
+
+        $count = strlen(self::CMS_URI);
+        $b = boolval(substr($uri,   -1 * $count) =='/' . self::CMS_URI);
+        $a = boolval(substr($uri, 0, 1 + $count) =='/' . self::CMS_URI . '/');
+
+        self::$cms = ($a || $b);
+
+        // App namespace calls divert to CMS
+        if (self::$cms) {
+            self::$namespaces['App'] = './' . self::CMS_PATH . '/';
+        }
+
+    //  var_dump(self::$namespaces);
     }
 
     /**************************************************************************/
@@ -122,13 +172,12 @@ class Loader
      * Init Loader class
      * Register global class loader function Loader::main
      *
-     * [!] application entry point is 'index.php'
+     * [!] application entry point is './web/index.php'
      * @return void
      */
     public static function init() {
-        $root = $_SERVER['SCRIPT_FILENAME'];
-    //  self::$root = substr($root, 0, strlen($root) - strlen('/web/index.php'));
-        self::$root = substr($root, 0, strlen($root) - 14);
+    //  self::detectCms();
+        self::$root = dirname($_SERVER['SCRIPT_FILENAME'], 3);
         self::register();
     }
 
