@@ -4,7 +4,7 @@
       <h3>
         Changes
       </h3>
-      <h4>Version 0.1.2 (2019 april 03)</h4>
+      <h4>Version 0.1.2 (2019 april 08)</h4>
       <ul>
         <li>Remake render engine.
         <li>Add PostgreSql database support (not tested).
@@ -18,9 +18,9 @@
         <li>Change classloader to namespace-based.
         <li>Change directories structure.
         <li>Allow web access only to
-            <span class="app-span-highlight">'./application/web/'</span>
+            <span class="app-span-highlight">'./web/'</span>
             directory.
-        <li>Change <span class="app-span-highlight">'./application/web/assets/css/microbe.css'</span>.
+        <li>Change <span class="app-span-highlight">'./web/assets/css/microbe.css'</span>.
       </ul>
       <h4>Version 0.1.1 (2019 march 17)</h4>
       <ul>
