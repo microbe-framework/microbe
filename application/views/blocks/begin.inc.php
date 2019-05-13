@@ -1,13 +1,12 @@
 <div class="app-content">
-  <div class="microbe-row" style="background-color1: #f00;">
-    <div class="microbe-col-3" style="background-color1: #0ff;">
+  <div class="microbe-row">
+    <div class="microbe-col-3">
       <div class="app-menu">
         <h4>Microbe</h4>
         <ul>
           <li><a href="<?=$this->getUrl('about')?>">About</a></li>
           <li><a href="<?=$this->getUrl('changes')?>">Changes</a></li>
           <li><a href="<?=$this->getUrl('license')?>">License</a></li>
-          <li><a href="<?=$app->getCmsUrl()?>">CMS</a></li>
         </ul>
         <h4>Handbook</h4>
         <ul>
@@ -21,4 +20,4 @@
         </ul>
       </div>
     </div>
-    <div class="microbe-col-6" style="background-color1: #ff0;">
+    <div class="microbe-col-6">
