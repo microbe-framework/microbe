@@ -90,7 +90,7 @@ Please report about bugs.
   
 <h4>Version 0.1.3 (2019 may 13)</h4>  
 1. Add administrator's web interface<br/>
-2. Add to class Microbe\Library\Http response methods<br/>
+2. Add to class \Microbe\Library\Http response methods<br/>
 3. Make Registry class static<br/>
 4. Change directories structure.<br/>
 5. Change './web/assets/css/microbe.css'.<br/>
