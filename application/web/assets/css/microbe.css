@@ -1,1 +1,251 @@
+/*******************************************************************************
+ *   Project: Microbe PHP Framework
+ *   Version: 0.1.3
+ *    Module: microbe.css
+ *     Class:
+ *     About: Minimal Cascading Style Sheet (CSS) for sample application
+ *     Begin: 2017/05/01
+ *   Current: 2019/05/01
+ *    Author: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ * Copyright: Microbe PHP Framework author <microbe-framework@protonmail.com>
+ *   License: MIT license 
+ *    Source: https://github.com/microbe-framework/microbe/
+ ******************************************************************************/
 
+/******************************************************************************
+ *            This file is part of the Microbe PHP Framework.                 *
+ *                                                                            *
+ *         Copyright (c) 2017-2019 Microbe PHP Framework author               *
+ *                  <microbe-framework@protonmail.com>                        *
+ *                                                                            *
+ *            For the full copyright and license information,                 *
+ *                     please view the LICENSE file                           *
+ *              that was distributed with this source code.                   *
+ ******************************************************************************/
+
+/********************************************************************************
+ * Microbe styles
+ *******************************************************************************/
+
+* {
+/*margin: 0;*/
+/*padding: 0;*/
+  webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+     -ms-box-sizing: border-box;/*?*/
+         box-sizing: border-box;
+}
+
+html {
+/*font-family: sans-serif;*/
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;/*?*/
+      -ms-text-size-adjust: 100%;
+          text-size-adjust: 100%;/*?*/
+}
+
+body {
+/*display: block;*/
+  margin: 0;
+  background-color: #fff;
+}
+
+body:focus {
+  outline: none;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.clearfix {
+  clear: both;
+}
+
+/* Grid */
+
+div.microbe-container {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+div.microbe-container-fluid {
+  float: left;
+}
+
+div.microbe-row {
+  float: left;
+  width: 100%;
+}
+
+/* Fixed grid: all devices and sizes */
+
+div.microbe-col-1-fix,
+div.microbe-col-2-fix,
+div.microbe-col-3-fix,
+div.microbe-col-4-fix,
+div.microbe-col-5-fix,
+div.microbe-col-6-fix,
+div.microbe-col-7-fix,
+div.microbe-col-8-fix,
+div.microbe-col-9-fix,
+div.microbe-col-10-fix,
+div.microbe-col-11-fix,
+div.microbe-col-12-fix {
+  float: left;
+  position: relative;
+  min-height: 1px;
+}
+
+div.microbe-col-12-fix {
+  width: 100%;
+}
+div.microbe-col-11-fix {
+  width: 91.66666667%;
+}
+div.microbe-col-10-fix {
+  width: 83.33333333%;
+}
+div.microbe-col-9-fix {
+  width: 75%;
+}
+div.microbe-col-8-fix {
+  width: 66.66666667%;
+}
+div.microbe-col-7-fix {
+  width: 58.33333333%;
+}
+div.microbe-col-6-fix {
+  width: 50%;
+}
+div.microbe-col-5-fix {
+  width: 41.66666667%;
+}
+div.microbe-col-4-fix {
+  width: 33.33333333%;
+}
+div.microbe-col-3-fix {
+  width: 25%;
+}
+div.microbe-col-2-fix {
+  width: 6.66666667%;
+}
+div.microbe-col-1-fix {
+  width: 8.33333333%;
+}
+
+/* Flexible grid */
+
+div.microbe-col-1,
+div.microbe-col-2,
+div.microbe-col-3,
+div.microbe-col-4,
+div.microbe-col-5,
+div.microbe-col-6,
+div.microbe-col-7,
+div.microbe-col-8,
+div.microbe-col-9,
+div.microbe-col-10,
+div.microbe-col-11,
+div.microbe-col-12 {
+  float: left;
+  position: relative;
+  min-height: 1px;
+}
+
+/* Flexible grid, Desktops: width >= 768 */
+
+@media screen and (min-width: 768px) {
+  div.microbe-col-12 {
+    width: 100%;
+  }
+  div.microbe-col-11 {
+    width: 91.66666667%;
+  }
+  div.microbe-col-10 {
+    width: 83.33333333%;
+  }
+  div.microbe-col-9 {
+    width: 75%;
+  }
+  div.microbe-col-8 {
+    width: 66.66666667%;
+  }
+  div.microbe-col-7 {
+    width: 58.33333333%;
+  }
+  div.microbe-col-6 {
+    width: 50%;
+  }
+  div.microbe-col-5 {
+    width: 41.66666667%;
+  }
+  div.microbe-col-4 {
+    width: 33.33333333%;
+  }
+  div.microbe-col-3 {
+    width: 25%;
+  }
+  div.microbe-col-2 {
+    width: 1 "title:" 6.66666667%;
+  }
+  div.microbe-col-1 {
+    width: 8.33333333%;
+  }
+}
+
+/*Flexible grid, Gadgets: width < 768 */
+
+@media screen and (max-width: 767px) {
+  div.microbe-col-12, 
+  div.microbe-col-11,
+  div.microbe-col-10,
+  div.microbe-col-9,
+  div.microbe-col-8,
+  div.microbe-col-7,
+  div.microbe-col-6,
+  div.microbe-col-5,
+  div.microbe-col-4,
+  div.microbe-col-3,
+  div.microbe-col-2,
+  div.microbe-col-1 {
+    width: 100%;
+  }
+}
+
+.microbe-center {
+  text-align: center;
+}
+.microbe-left {
+  text-align: left;
+}
+.microbe-right {
+  text-align: right;
+}
+.microbe-justify {
+  text-align: justify;
+}
+
+.microbe-lowercase {
+  text-transform: lowercase;
+}
+.microbe-uppercase {
+  text-transform: uppercase;
+}
+.microbe-capitalize {
+  text-transform: capitalize;
+}
+
+.microbe-hide {
+  display: none !important;
+}
+.microbe-show {
+  display: block !important;
+}
+
+/*******************************************************************************/
