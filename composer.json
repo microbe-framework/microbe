@@ -1,6 +1,7 @@
 {
     "name": "microbe-framework/microbe",
     "type": "framework",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.0"
     },
