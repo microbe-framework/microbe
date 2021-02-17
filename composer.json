@@ -1,8 +1,18 @@
 {
     "name": "microbe-framework/microbe",
     "type": "framework",
-    "minimum-stability": "dev",
+    "description": "Micro PHP framework",
+    "keywords": ["framework"],
+    "homepage": "https://github.com/microbe-framework/microbe",
+    "version": "0.1.3",
     "license": "MIT",
+    "minimum-stability": "dev-master",
+    "authors": [
+        {
+            "name": "The Microbe PHP Framework author",
+            "email": "microbe-framework@protonmail.com"
+        }
+    ],
     "repositories": [
         {
             "type": "vcs",
