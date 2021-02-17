@@ -5,6 +5,7 @@
 	"keywords": [],
 	"homepage": "https://www.github.com/microbe-framework/microbe/",
 	"license": "MIT",
+	"minimum-stability": "dev",
 	"authors": [
 		{
 			"name": "The Microbe PHP Framework author",
