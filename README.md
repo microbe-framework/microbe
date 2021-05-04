@@ -3,7 +3,7 @@
 <h4>Lightweight PHP framework for simple site construction</h4>  
 <h3>Version 0.1.3 (development)</h3>  
   
-&nbsp;&nbsp;&nbsp;Project: Microbe PHP Framework  
+&nbsp;&nbsp;&nbsp;Project: Microbe Framework  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About: Lightweight PHP framework for simple site construction  
 &nbsp;&nbsp;&nbsp;Version: 0.1.3 (developement)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Begin: 2017 may 01  
